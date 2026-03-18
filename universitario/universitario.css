@@ -1,0 +1,832 @@
+/* ==========================================================================
+   Universitario Page Specific Styles
+   ========================================================================== */
+
+/* Variables adicionales específicas */
+:root {
+    --color-bg-light: #f9fafb;
+    --color-border: #e5e7eb;
+    --color-text-mutted: #6b7280;
+    --color-status-green: #10b981;
+    --color-status-green-bg: #d1fae5;
+    --color-status-yellow: #f59e0b;
+    --color-status-yellow-bg: #fef3c7;
+    --color-status-blue: #3b82f6;
+    --color-status-blue-bg: #dbeafe;
+}
+
+body {
+    background-color: var(--color-bg-light);
+}
+
+/* ==========================================================================
+   Hero Section
+   ========================================================================== */
+.uni-hero {
+    padding: 4rem 1.5rem 8rem;
+    background-color: var(--color-bg-light);
+    text-align: center;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.uni-hero-content {
+    max-width: 800px;
+    margin-bottom: 2rem;
+}
+
+.uni-hero-content h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--color-black);
+    line-height: 1.2;
+    margin-bottom: 1rem;
+    letter-spacing: -0.02em;
+}
+
+.highlight-blue {
+    color: var(--color-blue-primary);
+}
+
+.uni-hero-content p {
+    font-size: 1.125rem;
+    color: var(--color-text-mutted);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+@media screen and (min-width: 768px) {
+    .uni-hero {
+        padding: 5rem 1.5rem 10rem;
+    }
+    .uni-hero-content h1 {
+        font-size: 3.5rem;
+    }
+    .uni-hero-content p {
+        font-size: 1.25rem;
+    }
+}
+
+/* Route Selector */
+.route-selector-container {
+    background-color: var(--color-white);
+    border-radius: 16px;
+    box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+    width: 100%;
+    max-width: 900px;
+    position: relative;
+    z-index: 10;
+}
+
+.route-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+@media screen and (min-width: 768px) {
+    .route-form {
+        flex-direction: row;
+        align-items: flex-end;
+    }
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    text-align: left;
+}
+
+.input-group label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--color-text-mutted);
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.05em;
+}
+
+.select-wrapper {
+    position: relative;
+}
+
+.select-wrapper select {
+    width: 100%;
+    appearance: none;
+    -webkit-appearance: none;
+    background-color: var(--color-bg-light);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 0.875rem 1rem 0.875rem 2.5rem;
+    font-family: inherit;
+    font-size: 1rem;
+    color: var(--color-black);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.select-wrapper select:focus {
+    outline: none;
+    border-color: var(--color-blue-primary);
+    box-shadow: 0 0 0 3px rgba(10, 77, 140, 0.1);
+}
+
+.select-wrapper i {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--color-blue-primary);
+    font-size: 1.125rem;
+    pointer-events: none;
+}
+
+.search-btn {
+    padding: 0.875rem 2rem;
+    height: 48px; /* Match input height */
+    font-size: 1rem;
+    gap: 0.5rem;
+    border-radius: 8px; /* Less pill-like for this form */
+}
+
+@media screen and (max-width: 767px) {
+    .search-btn {
+        width: 100%;
+    }
+}
+
+.popular-routes-tags {
+    margin-top: 1rem;
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.tag {
+    background-color: var(--color-bg-light);
+    color: var(--color-blue-primary);
+    font-size: 0.875rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: 50px;
+    font-weight: 500;
+}
+
+/* ==========================================================================
+   Active Routes Section
+   ========================================================================== */
+.active-routes-section {
+    padding: 0 1.5rem 5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section-header-inline {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 2rem;
+}
+
+.section-header-inline h2 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--color-black);
+    margin-bottom: 0.25rem;
+}
+
+.section-header-inline p {
+    color: var(--color-text-mutted);
+}
+
+.routes-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+}
+
+@media screen and (min-width: 768px) {
+    .routes-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.route-card {
+    background-color: var(--color-white);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+    border: 1px solid var(--color-border);
+    transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+.route-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.card-map-placeholder {
+    height: 180px;
+    position: relative;
+    background-color: #e5e5f7;
+    background-image:  repeating-radial-gradient( circle at 0 0, transparent 0, #e5e5f7 10px ), repeating-linear-gradient( #f7f7fc55, #f7f7fc );
+    overflow: hidden;
+}
+
+.map-img-mock {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.6; /* Solo para simular un mapa cargando */
+}
+
+.status-badge {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: 50px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.status-badge.green {
+    background-color: var(--color-status-green-bg);
+    color: var(--color-status-green);
+}
+
+.status-badge.yellow {
+    background-color: var(--color-status-yellow-bg);
+    color: var(--color-status-yellow);
+}
+
+.status-badge.blue {
+    background-color: var(--color-status-blue-bg);
+    color: var(--color-status-blue);
+}
+
+.card-content {
+    padding: 1.5rem;
+}
+
+.route-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.route-title h3 {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--color-black);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.route-title i {
+    color: var(--color-text-mutted);
+    font-size: 1rem;
+}
+
+.route-id {
+    font-size: 0.875rem;
+    color: var(--color-text-mutted);
+}
+
+.route-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--color-bg-light);
+}
+
+.route-info p {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.95rem;
+    color: var(--color-gray-dark);
+}
+
+.route-info i {
+    color: var(--color-blue-primary);
+    font-size: 1.125rem;
+}
+
+.route-desc {
+    font-size: 0.875rem;
+    color: var(--color-text-mutted);
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+}
+
+.w-full {
+    width: 100%;
+}
+.mt-2 {
+    margin-top: 0.5rem;
+}
+
+/* ==========================================================================
+   Detailed Route Card (Nordelta -> UADE Search Result)
+   ========================================================================== */
+.detailed-route-card {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    max-width: 1000px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.detailed-card-header {
+    padding: 1.5rem;
+    border-bottom: 1px solid var(--color-border);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    background-color: var(--color-white);
+}
+
+@media screen and (min-width: 768px) {
+    .detailed-card-header {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+}
+
+.detailed-route-title {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.detailed-route-title h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.detailed-route-title .status-badge {
+    position: static;
+    margin: 0;
+}
+
+.detailed-route-summary {
+    display: flex;
+    gap: 1.5rem;
+    color: var(--color-text-mutted);
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+.detailed-route-summary span {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.detailed-route-summary i {
+    color: var(--color-blue-primary);
+    font-size: 1.25rem;
+}
+
+.detailed-card-body {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0;
+}
+
+@media screen and (min-width: 992px) {
+    .detailed-card-body {
+        grid-template-columns: 1.2fr 1fr;
+    }
+}
+
+.detailed-map-container {
+    width: 100%;
+    /* En móvil, usamos proporción en lugar de altura fija para evitar recortes raros */
+    aspect-ratio: 4 / 3;
+    height: auto;
+    background-color: var(--color-white);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid var(--color-border);
+}
+
+@media screen and (min-width: 992px) {
+    .detailed-map-container {
+        height: 100%;
+        min-height: 450px;
+        aspect-ratio: auto;
+        border-bottom: none;
+        border-right: 1px solid var(--color-border);
+    }
+}
+
+.actual-map-img {
+    width: 100%;
+    height: 100%;
+    /* 'contain' garantiza que NUNCA se recorte el mapa en ningún dispositivo */
+    object-fit: contain;
+    object-position: center;
+    padding: 1rem;
+    display: block;
+}
+
+.detailed-schedule-container {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--color-white);
+}
+
+.schedule-tabs {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+    background: var(--color-bg-light);
+    padding: 0.375rem;
+    border-radius: 12px;
+}
+
+.tab-btn {
+    flex: 1;
+    padding: 0.75rem;
+    border: none;
+    background: transparent;
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--color-text-mutted);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.tab-btn.active {
+    background: var(--color-white);
+    color: var(--color-blue-primary);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.timeline {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    position: relative;
+    flex-grow: 1;
+    --scroll-active: 0; /* Variable q actualizará JS */
+}
+
+/* Línea base gris */
+.timeline::before {
+    content: '';
+    position: absolute;
+    top: 10px;
+    bottom: 20px;
+    left: 65px; 
+    width: 2px;
+    background-color: var(--color-border);
+    z-index: 0;
+}
+
+/* Línea viva de progreso azul */
+.timeline::after {
+    content: '';
+    position: absolute;
+    top: 10px;
+    bottom: 20px;
+    left: 65px;
+    width: 2px;
+    background-color: var(--color-blue-primary);
+    transform-origin: top;
+    transform: scaleY(var(--scroll-active));
+    z-index: 1;
+}
+
+.timeline li {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 1.5rem;
+    position: relative;
+    z-index: 2; /* Por encima de las pseudo-lineas */
+}
+
+.timeline li:last-child {
+    margin-bottom: 0;
+}
+
+.timeline .time {
+    width: 75px; 
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--color-text-mutted); /* Gris por defecto */
+    padding-top: 2px;
+    transition: color 0.3s ease;
+}
+
+.timeline .stop {
+    flex: 1;
+    padding-left: 2rem; 
+    position: relative;
+    color: var(--color-text-mutted); /* Gris por defecto */
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.timeline .stop::before {
+    content: '';
+    position: absolute;
+    left: -15.5px; 
+    top: 6px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: var(--color-white);
+    border: 2px solid var(--color-border); /* Gris por defecto */
+    z-index: 2;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Efecto Mágico al Scrollear (.active) */
+.timeline li.active .time {
+    color: var(--color-black); /* Resalta la hora */
+}
+
+.timeline li.active .stop {
+    color: var(--color-black);
+    font-weight: 600;
+}
+
+.timeline li.active .stop::before {
+    border-color: var(--color-blue-primary);
+    background-color: var(--color-white);
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.2); /* Glow sutil */
+}
+
+/* Scroll para línea de tiempo larga */
+.scrollable-timeline {
+    max-height: 280px;
+    overflow-y: auto;
+    padding-right: 15px;
+    margin-right: -10px; /* para compensar el padding del scroll */
+    scrollbar-width: thin;
+    scrollbar-color: #cbd5e1 transparent;
+}
+
+.scrollable-timeline::-webkit-scrollbar {
+    width: 6px;
+}
+
+.scrollable-timeline::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.scrollable-timeline::-webkit-scrollbar-thumb {
+    background-color: #cbd5e1;
+    border-radius: 10px;
+}
+
+/* Énfasis en la parada de "Vuelta" en el turno mañana */
+.timeline .return-stop {
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+}
+
+.timeline .return-stop::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -10px;
+    right: 0;
+    border-top: 1px dashed var(--color-border);
+}
+
+.timeline .return-stop .time {
+    color: var(--color-blue-primary);
+    position: relative;
+    z-index: 2;
+}
+
+.timeline .return-stop .stop {
+    font-weight: 700;
+    color: var(--color-black);
+}
+
+.timeline .return-stop .stop::before {
+    border-color: var(--color-status-yellow);
+    background-color: var(--color-status-yellow);
+}
+
+.availability-info {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--color-border);
+}
+
+.availability-info .seats {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--color-black);
+}
+
+.availability-info .seats i {
+    color: var(--color-status-green);
+    font-size: 1.5rem;
+}
+
+.availability-info .seats.out-of-stock {
+    color: var(--color-status-yellow);
+}
+
+.availability-info .seats.out-of-stock i {
+    color: var(--color-status-yellow);
+}
+
+.availability-info .seat-count {
+    color: var(--color-status-green);
+}
+
+.availability-info .seats.out-of-stock .seat-count {
+    color: var(--color-status-yellow);
+}
+
+/* Ocultamos el bloque de reserva principal en el tab de tarde solo si lo duplicamos */
+#tab-ida .availability-info,
+#tab-vuelta .availability-info {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+}
+
+.main-availability {
+    display: block; /* Visible por defecto */
+}
+
+/* Clase utilidad para botones de espera */
+.waitlist-btn {
+    border-color: var(--color-status-yellow);
+    color: var(--color-status-yellow);
+}
+
+.waitlist-btn:hover {
+    background-color: var(--color-status-yellow);
+    color: var(--color-white);
+}
+
+.reserve-btn {
+    font-size: 1.125rem;
+    padding: 1rem;
+    border-radius: 12px;
+    background-color: var(--color-blue-primary);
+    color: var(--color-white);
+    font-weight: 600;
+    transition: all var(--transition-fast);
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.reserve-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2);
+}
+
+/* ==========================================================================
+   Features Info Section (Mobile First)
+   ========================================================================== */
+.uni-features-section {
+    padding: 4rem 1.5rem;
+    background-color: var(--color-white);
+}
+
+.uni-features-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+/* Header de la sección */
+.features-header {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.features-header h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--color-black);
+}
+
+.features-header p {
+    font-size: 1rem;
+    color: var(--color-text-mutted);
+    line-height: 1.6;
+}
+
+/* Grilla de beneficios Mobile First (1 columna) */
+.features-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+}
+
+.feature-card {
+    background-color: var(--color-bg-light);
+    border-radius: 16px;
+    padding: 2rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    border: 1px solid var(--color-border);
+    transition: transform var(--transition-normal), box-shadow var(--transition-normal), border-color var(--transition-normal);
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+    border-color: var(--color-blue-light);
+}
+
+.feature-card .icon-box {
+    width: 56px;
+    height: 56px;
+    border-radius: 12px;
+    background-color: var(--color-status-blue-bg);
+    color: var(--color-blue-primary);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.75rem;
+    flex-shrink: 0;
+}
+
+.feature-card h4 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--color-black);
+    margin: 0;
+}
+
+.feature-card p {
+    font-size: 0.95rem;
+    color: var(--color-text-mutted);
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* Tablet (2 columnas) */
+@media screen and (min-width: 768px) {
+    .uni-features-section {
+        padding: 5rem 1.5rem;
+    }
+    .features-header h2 {
+        font-size: 2.5rem;
+    }
+    .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+    }
+}
+
+/* Desktop (4 columnas) */
+@media screen and (min-width: 1024px) {
+    .uni-features-section {
+        padding: 6rem 1.5rem;
+    }
+    .features-header {
+        margin-bottom: 2rem;
+    }
+    .features-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}

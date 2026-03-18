@@ -1,0 +1,1320 @@
+/* ==========================================================================
+   Variables y ConfiguraciÃ³n Base
+   ========================================================================== */
+:root {
+    /* Paleta de Colores: Blanco, Azul, Negro */
+    --color-white: #ffffff;
+    --color-black: #111111;
+    /* Un negro levemente suave para mejor lectura */
+    --color-blue-primary: #0a4d8c;
+    /* Azul clÃ¡sico corporativo */
+    --color-blue-dark: #073a6b;
+    --color-blue-light: #e6f0fa;
+    --color-gray-light: #f5f5f5;
+    --color-gray-dark: #333333;
+
+    /* TipografÃ­a */
+    /* Sans-serif limpia y moderna para UI, pero estructurada */
+    --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    /* Serif elegante opcional para logos o tÃ­tulos grandes dando toque clÃ¡sico */
+    --font-secondary: 'Playfair Display', Georgia, serif;
+
+    /* Sombras y transiciones (suaves, no exageradas) */
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+    --transition-fast: 0.2s ease-in-out;
+    --transition-normal: 0.3s ease-in-out;
+}
+
+/* ==========================================================================
+   Reset BÃ¡sico
+   ========================================================================== */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-primary);
+    color: var(--color-black);
+    background-color: var(--color-white);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+button {
+    cursor: pointer;
+    font-family: inherit;
+    border: none;
+    background: transparent;
+}
+
+/* ==========================================================================
+   Componentes Reusables (Botones)
+   ========================================================================== */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.625rem 1.25rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    border-radius: 50px;
+    /* Estilo 'Pill' moderno */
+    transition: all var(--transition-fast);
+}
+
+.btn-primary {
+    background-color: var(--color-blue-primary);
+    color: var(--color-white);
+    border: 1px solid var(--color-blue-primary);
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+    background-color: var(--color-blue-dark);
+    border-color: var(--color-blue-dark);
+}
+
+.btn-outline {
+    background-color: transparent;
+    color: var(--color-black);
+    border: 1px solid var(--color-gray-dark);
+}
+
+.btn-outline:hover,
+.btn-outline:focus {
+    background-color: var(--color-gray-light);
+    border-color: var(--color-black);
+}
+
+/* ==========================================================================
+   Header Mobile First
+   ========================================================================== */
+.main-header {
+    background-color: var(--color-white);
+    box-shadow: var(--shadow-sm);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid var(--color-gray-light);
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+/* Logo */
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo-img {
+    height: 40px;
+    /* TamaÃ±o estÃ¡ndar para un header */
+    width: auto;
+    display: block;
+}
+
+/* BotÃ³n menÃº mÃ³vil */
+.mobile-menu-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: var(--color-black);
+    padding: 0.25rem;
+    transition: color var(--transition-fast);
+}
+
+.mobile-menu-btn:hover {
+    color: var(--color-blue-primary);
+}
+
+/* NavegaciÃ³n (Mobile First - Oculta por defecto) */
+.main-nav {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: var(--color-white);
+    box-shadow: var(--shadow-md);
+    padding: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height var(--transition-normal);
+}
+
+.main-nav.nav-open {
+    max-height: 500px;
+    /* Suficiente para el contenido */
+}
+
+/* Enlaces de menÃº en mÃ³vil */
+.nav-links {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem 1.5rem 0;
+}
+
+.nav-links a {
+    display: block;
+    padding: 0.75rem 0;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--color-gray-dark);
+    border-bottom: 1px solid var(--color-gray-light);
+    transition: color var(--transition-fast);
+}
+
+.nav-links a:hover {
+    color: var(--color-blue-primary);
+}
+
+/* Acciones en mÃ³vil */
+.user-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 1.5rem;
+}
+
+/* ==========================================================================
+   Media Queries (Desktop >= 992px)
+   ========================================================================== */
+@media screen and (min-width: 992px) {
+    .mobile-menu-btn {
+        display: none;
+    }
+
+    .main-nav {
+        position: static;
+        width: auto;
+        max-height: none;
+        box-shadow: none;
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+        overflow: visible;
+        background: transparent;
+    }
+
+    .nav-links {
+        flex-direction: row;
+        padding: 0;
+        gap: 2rem;
+    }
+
+    .nav-links a {
+        padding: 0.5rem 0;
+        border-bottom: none;
+        position: relative;
+    }
+
+    /* Efecto subrayado clÃ¡sico en hover para desktop */
+    .nav-links a::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background-color: var(--color-blue-primary);
+        transition: width var(--transition-fast);
+    }
+
+    .nav-links a:hover::after {
+        width: 100%;
+    }
+
+    .user-actions {
+        flex-direction: row;
+        padding: 0;
+        gap: 1rem;
+        align-items: center;
+        margin-left: 1rem;
+        border-left: 1px solid var(--color-gray-light);
+        padding-left: 2rem;
+    }
+}
+
+/* ==========================================================================
+   Hero Slider (Main Section)
+   ========================================================================== */
+.hero-slider {
+    position: relative;
+    width: 100vw;
+    height: 80vh;
+    /* Altura principal */
+    min-height: 500px;
+    max-height: 900px;
+    overflow: hidden;
+    background-color: var(--color-black);
+}
+
+@media screen and (min-width: 992px) {
+    .hero-slider {
+        height: calc(100vh - 70px);
+        /* Altura completa menos el header en desktop */
+    }
+}
+
+.slides-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    /* Controlado por GSAP */
+    z-index: 1;
+    overflow: hidden;
+}
+
+.slide.active {
+    opacity: 1;
+    z-index: 2;
+}
+
+.slide-bg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    /* Transform manejado por GSAP para Ken Burns */
+}
+
+/* Oscurecer la imagen para que el texto resalte */
+.slide-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right,
+            rgba(0, 0, 0, 0.7) 0%,
+            rgba(0, 0, 0, 0.4) 50%,
+            rgba(0, 0, 0, 0.1) 100%);
+    z-index: 2;
+}
+
+.slide-content {
+    position: absolute;
+    top: 50%;
+    left: 10%;
+    transform: translateY(-50%);
+    z-index: 3;
+    max-width: 600px;
+    color: var(--color-white);
+}
+
+.slide-content h2 {
+    font-family: var(--font-secondary);
+    font-size: 2.5rem;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.slide-content p {
+    font-size: 1.125rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+    line-height: 1.6;
+}
+
+@media screen and (min-width: 768px) {
+    .slide-content h2 {
+        font-size: 3.5rem;
+    }
+
+    .slide-content p {
+        font-size: 1.25rem;
+    }
+}
+
+/* Botones Grandes para el Slider */
+.btn-large {
+    padding: 0.875rem 2rem;
+    font-size: 1rem;
+}
+
+.btn-light {
+    border-color: var(--color-white);
+    color: var(--color-white);
+}
+
+.btn-light:hover {
+    background-color: var(--color-white);
+    color: var(--color-black);
+}
+
+/* Controles del Slider (Flechas) */
+.slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--color-white);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    transition: all var(--transition-fast);
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.slider-btn:hover {
+    background-color: var(--color-blue-primary);
+    border-color: var(--color-blue-primary);
+}
+
+.prev-btn {
+    left: 1.5rem;
+}
+
+.next-btn {
+    right: 1.5rem;
+}
+
+@media screen and (max-width: 767px) {
+    .slider-btn {
+        display: none;
+        /* Ocultar flechas en mÃ³viles para limpieza visual */
+    }
+
+    .slide-content {
+        left: 5%;
+        right: 5%;
+        text-align: center;
+    }
+
+    .slide-overlay {
+        /* Gradiente mÃ¡s uniforme para mobile donde el texto va centrado */
+        background: linear-gradient(to bottom,
+                rgba(0, 0, 0, 0.3) 0%,
+                rgba(0, 0, 0, 0.7) 100%);
+    }
+}
+
+/* Indicadores (Dots) */
+.slider-dots {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    display: flex;
+    gap: 0.75rem;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.4);
+    transition: all var(--transition-fast);
+}
+
+.dot.active {
+    background-color: var(--color-white);
+    transform: scale(1.2);
+}
+
+.dot:hover {
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+/* ==========================================================================
+   Features Banner (Floating Indicator)
+   ========================================================================== */
+.features-banner {
+    max-width: 1200px;
+    margin: -3.5rem auto 3rem;
+    /* Margen negativo para solapar el slider */
+    position: relative;
+    z-index: 20;
+    padding: 0 1.5rem;
+}
+
+.features-container {
+    background-color: var(--color-white);
+    border-radius: 16px;
+    box-shadow: 0 10px 30px -5px rgba(10, 77, 140, 0.15);
+    /* Sombra alineada con las tarjetas */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem 3rem;
+    padding: 2rem;
+}
+
+.feature-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--color-blue-dark);
+}
+
+.feature-item i {
+    font-size: 2rem;
+    color: var(--color-blue-primary);
+}
+
+@media screen and (min-width: 768px) {
+    .features-container {
+        justify-content: space-between;
+    }
+}
+
+/* ==========================================================================
+   Services Section (Pricing Cards)
+   ========================================================================== */
+:root {
+    --color-green-success: #2e7d32;
+    --color-bg-alt: #f8fafc;
+    /* Gris extra claro para contraste */
+}
+
+.services-section {
+    padding: 5rem 1.5rem;
+    background-color: var(--color-blue-light);
+    /* Fondo suave diferencial */
+}
+
+.services-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 3.5rem;
+}
+
+.section-header h2 {
+    font-family: var(--font-secondary);
+    font-size: 2.5rem;
+    color: var(--color-blue-dark);
+    margin-bottom: 0.5rem;
+}
+
+.section-header p {
+    color: var(--color-gray-dark);
+    font-size: 1.125rem;
+}
+
+/* Grilla de Tarjetas */
+.services-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    align-items: stretch;
+}
+
+@media screen and (min-width: 768px) {
+    .services-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Tarjeta (Card) Rediseño Moderno */
+.service-card {
+    background-color: var(--color-white);
+    border-radius: 24px;
+    /* Bordes muy redondeados */
+    box-shadow: 0 20px 40px -10px rgba(10, 77, 140, 0.08);
+    /* Sombra tintada suave */
+    padding: 2.5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+    border: none;
+    /* Eliminar borde duro para un look más limpio */
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+    /* Elevación más notoria */
+    box-shadow: 0 30px 60px -15px rgba(10, 77, 140, 0.15);
+    /* Sombra más pronunciada en hover */
+}
+
+.card-header {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--color-gray-light);
+}
+
+.card-header h3 {
+    font-family: var(--font-secondary);
+    font-size: 1.75rem;
+    color: var(--color-blue-primary);
+}
+
+.card-body {
+    flex-grow: 1;
+    /* Para que todas las tarjetas tengan el mismo alto de botón */
+    margin-bottom: 2rem;
+}
+
+/* Lista de Beneficios */
+.benefit-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.benefit-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    font-size: 0.95rem;
+    color: var(--color-gray-dark);
+    line-height: 1.4;
+}
+
+.benefit-list i {
+    color: var(--color-green-success);
+    font-size: 1.25rem;
+    margin-top: 2px;
+    /* Alineación visual con el texto */
+    flex-shrink: 0;
+}
+
+/* Footer de Tarjeta */
+.card-footer {
+    margin-top: auto;
+}
+
+/* Utilidad para botones que ocupan 100% */
+.btn-block {
+    display: flex;
+    width: 100%;
+}
+
+/* ==========================================================================
+   Nuestro Equipo Section
+   ========================================================================== */
+.team-section {
+    padding: 5rem 1.5rem;
+    background-color: var(--color-white);
+}
+
+.team-container {
+    max-width: 1000px;
+    /* Un poco más estrecho para centrar el foco */
+    margin: 0 auto;
+}
+
+.team-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+}
+
+/* Perfil CEO */
+.ceo-profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1.5rem;
+    background-color: var(--color-bg-alt);
+    padding: 2.5rem 1.5rem;
+    border-radius: 24px;
+    box-shadow: 0 20px 40px -10px rgba(10, 77, 140, 0.08);
+    /* Sombra moderna como las cards */
+    transition: transform var(--transition-normal);
+}
+
+.ceo-profile:hover {
+    transform: translateY(-5px);
+}
+
+.ceo-image {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    background-color: var(--color-blue-light);
+    color: var(--color-blue-primary);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 4rem;
+    overflow: hidden;
+    flex-shrink: 0;
+    /* Si tienes una imagen del CEO, usarás img con object-fit: cover aquí dentro */
+}
+
+/* Estilos a aplicar en el futuro cuando subas la foto circular */
+.ceo-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.ceo-info h3 {
+    font-family: var(--font-secondary);
+    font-size: 1.75rem;
+    color: var(--color-blue-dark);
+    margin-bottom: 0.25rem;
+}
+
+.ceo-title {
+    display: block;
+    color: var(--color-blue-primary);
+    font-weight: 600;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.ceo-info p {
+    color: var(--color-gray-dark);
+    max-width: 600px;
+    margin: 0 auto;
+    font-size: 1.05rem;
+    line-height: 1.6;
+}
+
+/* Banners de Estadísticas */
+.team-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.stat-banner {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    background-color: var(--color-white);
+    padding: 1.5rem 2rem;
+    border-radius: 24px;
+    border: 1px solid var(--color-blue-light);
+    box-shadow: 0 10px 30px -5px rgba(10, 77, 140, 0.05);
+    transition: transform var(--transition-fast);
+}
+
+.stat-banner:hover {
+    transform: translateY(-3px);
+}
+
+.stat-icon {
+    width: 60px;
+    height: 60px;
+    background-color: var(--color-blue-light);
+    color: var(--color-blue-primary);
+    border-radius: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.25rem;
+    flex-shrink: 0;
+}
+
+.stat-number {
+    display: block;
+    font-family: var(--font-secondary);
+    font-size: 2.25rem;
+    font-weight: 700;
+    color: var(--color-blue-dark);
+    line-height: 1;
+    margin-bottom: 0.25rem;
+}
+
+.stat-label {
+    display: block;
+    color: var(--color-gray-dark);
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+/* Media Queries (Desktop) */
+@media screen and (min-width: 768px) {
+    .team-content {
+        gap: 3rem;
+    }
+
+    .ceo-profile {
+        flex-direction: row;
+        text-align: left;
+        padding-bottom: 1.5rem;
+        border-bottom: 1px solid var(--color-gray-light);
+    }
+}
+
+.card-header h3 {
+        font-family: var(--font-secondary);
+        font-size: 1.75rem;
+        color: var(--color-blue-primary);
+    }
+
+    .card-body {
+        flex-grow: 1;
+        /* Para que todas las tarjetas tengan el mismo alto de botón */
+        margin-bottom: 2rem;
+    }
+
+    /* Lista de Beneficios */
+    .benefit-list {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .benefit-list li {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.75rem;
+        font-size: 0.95rem;
+        color: var(--color-gray-dark);
+        line-height: 1.4;
+    }
+
+    .benefit-list i {
+        color: var(--color-green-success);
+        font-size: 1.25rem;
+        margin-top: 2px;
+        /* Alineación visual con el texto */
+        flex-shrink: 0;
+    }
+
+    /* Footer de Tarjeta */
+    .card-footer {
+        margin-top: auto;
+    }
+
+    /* Utilidad para botones que ocupan 100% */
+    .btn-block {
+        display: flex;
+        width: 100%;
+    }
+
+    /* ==========================================================================
+   Nuestro Equipo Section
+   ========================================================================== */
+    .team-section {
+        padding: 5rem 1.5rem;
+        background-color: var(--color-white);
+    }
+
+    .team-container {
+        max-width: 1000px;
+        /* Un poco más estrecho para centrar el foco */
+        margin: 0 auto;
+    }
+
+    .team-content {
+        display: flex;
+        flex-direction: column;
+        gap: 2.5rem;
+    }
+
+    /* Perfil CEO */
+    .ceo-profile {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 1.5rem;
+        background-color: var(--color-bg-alt);
+        padding: 2.5rem 1.5rem;
+        border-radius: 24px;
+        box-shadow: 0 20px 40px -10px rgba(10, 77, 140, 0.08);
+        /* Sombra moderna como las cards */
+        transition: transform var(--transition-normal);
+    }
+
+    .ceo-profile:hover {
+        transform: translateY(-5px);
+    }
+
+    .ceo-image {
+        width: 140px;
+        height: 140px;
+        border-radius: 50%;
+        background-color: var(--color-blue-light);
+        color: var(--color-blue-primary);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 4rem;
+        overflow: hidden;
+        flex-shrink: 0;
+        /* Si tienes una imagen del CEO, usarás img con object-fit: cover aquí dentro */
+    }
+
+    /* Estilos a aplicar en el futuro cuando subas la foto circular */
+    .ceo-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .ceo-info h3 {
+        font-family: var(--font-secondary);
+        font-size: 1.75rem;
+        color: var(--color-blue-dark);
+        margin-bottom: 0.25rem;
+    }
+
+    .ceo-title {
+        display: block;
+        color: var(--color-blue-primary);
+        font-weight: 600;
+        margin-bottom: 1rem;
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    .ceo-info p {
+        color: var(--color-gray-dark);
+        max-width: 600px;
+        margin: 0 auto;
+        font-size: 1.05rem;
+        line-height: 1.6;
+    }
+
+    /* Banners de Estadísticas */
+    .team-stats {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .stat-banner {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+        background-color: var(--color-white);
+        padding: 1.5rem 2rem;
+        border-radius: 24px;
+        border: 1px solid var(--color-blue-light);
+        box-shadow: 0 10px 30px -5px rgba(10, 77, 140, 0.05);
+        transition: transform var(--transition-fast);
+    }
+
+    .stat-banner:hover {
+        transform: translateY(-3px);
+    }
+
+    .stat-icon {
+        width: 60px;
+        height: 60px;
+        background-color: var(--color-blue-light);
+        color: var(--color-blue-primary);
+        border-radius: 16px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 2.25rem;
+        flex-shrink: 0;
+    }
+
+    .stat-number {
+        display: block;
+        font-family: var(--font-secondary);
+        font-size: 2.25rem;
+        font-weight: 700;
+        color: var(--color-blue-dark);
+        line-height: 1;
+        margin-bottom: 0.25rem;
+    }
+
+    .stat-label {
+        display: block;
+        color: var(--color-gray-dark);
+        font-size: 1rem;
+        font-weight: 500;
+    }
+
+    /* Media Queries (Desktop) */
+    @media screen and (min-width: 768px) {
+        .team-content {
+            gap: 3rem;
+        }
+
+        .ceo-profile {
+            flex-direction: row;
+            text-align: left;
+            padding: 3rem 4rem;
+            gap: 3rem;
+        }
+
+        .ceo-image {
+            width: 160px;
+            height: 160px;
+        }
+
+        .ceo-info p {
+            margin: 0;
+            /* Anula el margin auto para centrado */
+        }
+
+        .team-stats {
+            flex-direction: row;
+        }
+
+        .stat-banner {
+            flex: 1;
+            /* Ocupan la mitad del ancho cada uno */
+        }
+    }
+
+    /* ==========================================================================
+   Footer Principal
+   ========================================================================== */
+    .main-footer {
+        background-color: var(--color-white);
+        color: var(--color-black);
+        padding: 4rem 1.5rem 0;
+        margin-top: 2rem;
+        border-top: 1px solid var(--color-gray-light);
+    }
+
+    .footer-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap: 3rem;
+        padding-bottom: 3rem;
+    }
+
+    .footer-column {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 1.5rem;
+    }
+
+    .footer-logo {
+        height: 48px;
+        width: auto;
+        object-fit: contain;
+        align-self: center;
+    }
+
+    .footer-desc {
+        color: var(--color-gray-dark);
+        font-size: 0.95rem;
+        line-height: 1.6;
+        max-width: 300px;
+    }
+
+    .footer-contact {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.75rem;
+    }
+
+    .footer-contact a {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.75rem;
+        color: var(--color-black);
+        font-size: 0.95rem;
+        transition: color var(--transition-fast);
+    }
+
+    .footer-contact a:hover {
+        color: var(--color-blue-primary);
+    }
+
+    .footer-contact i {
+        font-size: 1.25rem;
+        color: var(--color-blue-primary);
+    }
+
+    .footer-column h4 {
+        font-family: var(--font-secondary);
+        font-size: 1.25rem;
+        color: var(--color-black);
+        margin-bottom: 0.25rem;
+    }
+
+    .social-links {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+    }
+
+    .social-links a {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: var(--color-blue-light);
+        color: var(--color-blue-primary);
+        font-size: 1.25rem;
+        transition: all var(--transition-fast);
+    }
+
+    .social-links a:hover {
+        background-color: var(--color-blue-primary);
+        color: var(--color-white);
+        transform: translateY(-3px);
+    }
+
+    .footer-links {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    .footer-links a {
+        color: var(--color-gray-dark);
+        font-size: 0.95rem;
+        transition: color var(--transition-fast);
+    }
+
+    .footer-links a:hover {
+        color: var(--color-blue-primary);
+    }
+
+    .footer-bottom {
+        border-top: 1px solid var(--color-gray-light);
+        padding: 1.5rem 0;
+        text-align: center;
+    }
+
+    .footer-bottom p {
+        color: #888;
+        font-size: 0.875rem;
+    }
+
+    /* Media Queries para Footer (Desktop) */
+    @media screen and (min-width: 768px) {
+        .footer-container {
+            flex-direction: row;
+            justify-content: space-between;
+            gap: 2rem;
+        }
+
+        .footer-column {
+            flex: 1;
+            align-items: flex-start;
+            text-align: left;
+        }
+
+        .footer-column:first-child {
+            flex: 2;
+            /* Info y contacto ocupan un poco más de espacio */
+        }
+
+        .footer-logo {
+            align-self: flex-start;
+        }
+
+        .footer-contact {
+            align-items: flex-start;
+        }
+
+        .social-links {
+            justify-content: flex-start;
+        }
+    }
+
+    /* ==========================================================================
+   Nueva Sección de Reseñas (Mobile-First & Canvas Design)
+   ========================================================================== */
+    .movigo-reviews-section {
+        padding: 4rem 1.5rem;
+        background-color: var(--color-blue-primary);
+        color: var(--color-white);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        overflow: hidden;
+        /* Prevent horizontal scroll bar on mobile view if cards extend */
+    }
+
+    .reviews-header {
+        text-align: center;
+        margin-bottom: 2.5rem;
+        max-width: 600px;
+    }
+
+    .reviews-subtitle {
+        display: inline-block;
+        font-size: 0.85rem;
+        font-weight: 700;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: var(--color-blue-light);
+        margin-bottom: 0.75rem;
+        padding: 0.25rem 0.75rem;
+        background: rgba(255, 255, 255, 0.15);
+        border-radius: 50px;
+        backdrop-filter: blur(4px);
+    }
+
+    .reviews-header h2 {
+        font-size: 2rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        line-height: 1.2;
+    }
+
+    .reviews-desc {
+        font-size: 1.05rem;
+        opacity: 0.85;
+        line-height: 1.5;
+    }
+
+    .reviews-container {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        width: 100%;
+        max-width: 1200px;
+    }
+
+    .modern-review-card {
+        background: rgba(255, 255, 255, 0.08);
+        /* Canvas-design glass effect */
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        border-radius: 20px;
+        padding: 1.75rem;
+        display: flex;
+        flex-direction: column;
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), background 0.3s ease;
+    }
+
+    .modern-review-card:hover {
+        transform: translateY(-8px);
+        background: rgba(255, 255, 255, 0.12);
+        /* Slightly brighter on hover */
+    }
+
+    .review-top {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 1.25rem;
+        flex-wrap: wrap;
+        /* Allows stars to wrap on very small screens if necessary */
+    }
+
+    .reviewer-avatar {
+        width: 48px;
+        height: 48px;
+        background: linear-gradient(135deg, var(--color-blue-light), #93c5fd);
+        color: var(--color-blue-primary);
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.75rem;
+        flex-shrink: 0;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .reviewer-meta {
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+        /* Pushes stars to the right edge */
+    }
+
+    .reviewer-meta strong {
+        font-size: 1.05rem;
+        font-weight: 600;
+        letter-spacing: -0.01em;
+    }
+
+    .reviewer-meta span {
+        font-size: 0.85rem;
+        opacity: 0.7;
+        margin-top: 0.15rem;
+    }
+
+    .review-stars {
+        display: flex;
+        gap: 0.2rem;
+        color: #fbbf24;
+        /* Distinct golden color */
+        font-size: 1rem;
+        filter: drop-shadow(0 2px 4px rgba(251, 191, 36, 0.3));
+        /* Soft glow */
+    }
+
+    .review-content {
+        font-size: 1.1rem;
+        line-height: 1.6;
+        font-style: italic;
+        font-weight: 400;
+        opacity: 0.95;
+        position: relative;
+        padding-left: 0.5rem;
+        border-left: 3px solid rgba(255, 255, 255, 0.3);
+        /* Subtle visual anchor */
+    }
+
+    /* Enhancements for Tab/Desktop Layouts */
+    @media screen and (min-width: 768px) {
+        .movigo-reviews-section {
+            padding: 6rem 2rem;
+        }
+
+        .reviews-header h2 {
+            font-size: 2.75rem;
+        }
+
+        .reviews-container {
+            flex-direction: row;
+            justify-content: center;
+            align-items: stretch;
+            /* Make cards equal height */
+        }
+
+        .modern-review-card {
+            flex: 1;
+            max-width: 380px;
+            /* Constrain max width for optimal readability */
+        }
+    }

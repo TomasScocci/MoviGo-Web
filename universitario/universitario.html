@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Universitario - MoviGO</title>
+    <!-- Google Fonts: Inter para un look moderno y clásico -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;1,600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="./universitario.css">
+    <!-- Phosphor Icons para iconos limpios (menú hamburguesa) -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+</head>
+
+<body>
+    <!-- Contenido Principal -->
+    <div id="main-content">
+
+        <header class="main-header">
+            <div class="header-container">
+                <!-- Logo funciona como Home button -->
+                <a href="../index.html" class="logo" aria-label="Volver a Inicio">
+                    <img src="../assets/logo.png" alt="MoviGO Logo" class="logo-img">
+                </a>
+
+                <!-- Botón Menú Móvil -->
+                <button class="mobile-menu-btn" aria-label="Abrir Menú" aria-expanded="false" aria-controls="main-nav">
+                    <i class="ph ph-list"></i>
+                </button>
+
+                <!-- Navegación Principal -->
+                <nav id="main-nav" class="main-nav">
+                    <ul class="nav-links">
+                        <li><a href="#universitario">Universitario</a></li>
+                        <li><a href="../index.html#personalizado">Personalizado</a></li>
+                        <li><a href="../index.html#galeria">Galería</a></li>
+                        <li><a href="../index.html#trayectoria">Trayectoria</a></li>
+                        <li><a href="../index.html#contacto">Contacto</a></li>
+                    </ul>
+
+                    <!-- Acciones de Usuario (dentro del nav para mobile) -->
+                    <div class="user-actions">
+                        <a href="#login" class="btn btn-outline">Iniciar Sesión</a>
+                        <a href="#register" class="btn btn-primary">Registrarse</a>
+                    </div>
+                </nav>
+            </div>
+        </header>
+
+        <main class="uni-page-main">
+            <!-- Hero Section de Universitario -->
+            <section class="uni-hero">
+                <div class="uni-hero-content">
+                    <h1>Tu viaje diario,<br><span class="highlight-blue">Mejorado.</span></h1>
+                    <p>Servicio premium puerta a campus para la próxima generación de profesionales. Cómodo, seguro y
+                        siempre a tiempo.</p>
+                </div>
+
+                <!-- Selector de Rutas Flotante -->
+                <div class="route-selector-container">
+                    <form id="route-form" class="route-form">
+                        <div class="input-group">
+                            <label for="origin-select">PUNTO DE PARTIDA</label>
+                            <div class="select-wrapper">
+                                <select id="origin-select" name="origin">
+                                    <option value="" disabled selected>Selecciona Origen (Nordelta, Canning...)</option>
+                                    <option value="nordelta">Nordelta</option>
+                                    <option value="canning">Canning</option>
+                                </select>
+                                <i class="ph-fill ph-map-pin"></i>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label for="dest-select">UNIVERSIDAD DE DESTINO</label>
+                            <div class="select-wrapper">
+                                <select id="dest-select" name="destination">
+                                    <option value="" disabled selected>Selecciona Universidad (UP, UB...)</option>
+                                    <option value="up">UP (Palermo)</option>
+                                    <option value="ub">UB (Belgrano)</option>
+                                    <option value="ditella">Di Tella (Belgrano/Núñez)</option>
+                                    <option value="uade">UADE (Monserrat)</option>
+                                    <option value="uca">UCA (Puerto Madero)</option>
+                                </select>
+                                <i class="ph-fill ph-student"></i>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary search-btn">
+                            <i class="ph ph-magnifying-glass"></i> Buscar Mi Ruta
+                        </button>
+                    </form>
+
+                </div>
+            </section>
+
+            <!-- Sección de Rutas Activas -->
+            <section class="active-routes-section" id="active-routes-section" style="display: none;">
+                <div class="section-header-inline">
+                    <div class="header-text">
+                        <h2>Rutas Activas</h2>
+                        <p>Disponibilidad en tiempo real de nuestros recorridos más frecuentes.</p>
+                    </div>
+                </div>
+
+                <div class="routes-grid" id="routes-container">
+                    <!-- NUEVO: Tarjeta Detallada Nordelta -> UADE (Oculta por defecto) -->
+                    <div class="route-card detailed-route-card" data-origin="nordelta" data-dest="uade"
+                        style="display: none;">
+                        <div class="detailed-card-header">
+                            <div class="detailed-route-title">
+                                <h3>Nordelta <i class="ph ph-arrow-right"></i> UADE</h3>
+                            </div>
+                            <div class="detailed-route-summary">
+                                <span><i class="ph-fill ph-map-pin"></i> 12 Paradas</span>
+                            </div>
+                        </div>
+
+                        <div class="detailed-card-body">
+                            <!-- Left col: map -->
+                            <div class="detailed-map-container">
+                                <img src="./mapas/mapa_nordelta_uade.jpg" alt="Mapa Nordelta a UADE"
+                                    class="actual-map-img">
+                            </div>
+
+                            <!-- Right col: schedules & stops -->
+                            <div class="detailed-schedule-container">
+                                <div class="schedule-tabs">
+                                    <button class="tab-btn active" data-tab="ida">Turno Mañana</button>
+                                    <button class="tab-btn" data-tab="vuelta">Turno Tarde</button>
+                                </div>
+
+                                <div class="tab-content active" id="tab-ida">
+                                    <ul class="timeline scrollable-timeline">
+                                        <li>
+                                            <div class="time">06:05</div>
+                                            <div class="stop">Santa Barbara</div>
+                                        </li>
+                                        <li>
+                                            <div class="time">06:09</div>
+                                            <div class="stop">La Isla</div>
+                                        </li>
+                                        <li>
+                                            <div class="time">06:11</div>
+                                            <div class="stop">Cabos del Lago</div>
+                                        </li>
+                                        <li>
+                                            <div class="time">06:13</div>
+                                            <div class="stop">La Alameda</div>
+                                        </li>
+                                        <li>
+                                            <div class="time">06:15</div>
+                                            <div class="stop">Alisos</div>
+                                        </li>
+                                        <li>
+                                            <div class="time">06:18</div>
+                                            <div class="stop">Castores</div>
+                                        </li>
+                                        <li>
+                                            <div class="time">06:20</div>
+                                            <div class="stop">Centro Comercial</div>
+                                        </li>
+                                        <li>
+                                            <div class="time">06:23</div>
+                                            <div class="stop">Altamira</div>
+                                        </li>
+                                        <li>
+                                            <div class="time">06:26</div>
+                                            <div class="stop">Kansas</div>
+                                        </li>
+                                        <li>
+                                            <div class="time">06:30</div>
+                                            <div class="stop">Rincon de la Costa</div>
+                                        </li>
+                                        <li>
+                                            <div class="time">06:39</div>
+                                            <div class="stop">Punto Tigre</div>
+                                        </li>
+                                        <li>
+                                            <div class="time">07:30</div>
+                                            <div class="stop">UADE</div>
+                                        </li>
+                                        <li class="return-stop">
+                                            <div class="time">12:20</div>
+                                            <div class="stop">Vuelta</div>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <div class="tab-content" id="tab-vuelta" style="display: none;">
+                                    <ul class="timeline scrollable-timeline">
+                                        <li>
+                                            <div class="time">06:05</div>
+                                            <div class="stop">Santa Barbara</div>
+                                        </li>
+                                        <li>
+                                            <div class="time">06:09</div>
+                                            <div class="stop">La Isla</div>
+                                        </li>
+                                        <li>
+                                            <div class="time">06:11</div>
+                                            <div class="stop">Cabos del Lago</div>
+                                        </li>
+                                        <li>
+                                            <div class="time">06:13</div>
+                                            <div class="stop">La Alameda</div>
+                                        </li>
+                                        <li>
+                                            <div class="time">06:15</div>
+                                            <div class="stop">Alisos</div>
+                                        </li>
+                                        <li>
+                                            <div class="time">06:18</div>
+                                            <div class="stop">Castores</div>
+                                        </li>
+                                        <li>
+                                            <div class="time">06:20</div>
+                                            <div class="stop">Centro Comercial</div>
+                                        </li>
+                                        <li>
+                                            <div class="time">06:23</div>
+                                            <div class="stop">Altamira</div>
+                                        </li>
+                                        <li>
+                                            <div class="time">06:26</div>
+                                            <div class="stop">Kansas</div>
+                                        </li>
+                                        <li>
+                                            <div class="time">06:30</div>
+                                            <div class="stop">Rincon de la Costa</div>
+                                        </li>
+                                        <li>
+                                            <div class="time">06:39</div>
+                                            <div class="stop">Punto Tigre</div>
+                                        </li>
+                                        <li>
+                                            <div class="time">07:30</div>
+                                            <div class="stop">UADE</div>
+                                        </li>
+                                        <li class="return-stop">
+                                            <div class="time">12:20</div>
+                                            <div class="stop">Vuelta</div>
+                                        </li>
+                                    </ul>
+                                    <div class="availability-info">
+                                        <div class="seats out-of-stock">
+                                            <i class="ph-fill ph-warning-circle"></i>
+                                            <span class="seat-count">0</span> Lugares disponibles
+                                        </div>
+                                        <button class="btn btn-outline w-full waitlist-btn">Unirse a la lista de
+                                            espera</button>
+                                    </div>
+                                </div>
+
+                                <div class="availability-info main-availability">
+                                    <div class="seats">
+                                        <i class="ph-fill ph-user-circle"></i>
+                                        <span class="seat-count">4</span> Lugares disponibles
+                                    </div>
+                                    <button class="btn btn-primary w-full reserve-btn">Reservar lugar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sección de Features Info -->
+            <section class="uni-features-section">
+                <div class="uni-features-container">
+                    <div class="features-header">
+                        <h2>Enfócate en tus estudios,<br><span class="highlight-blue">no en el tráfico.</span></h2>
+                        <p>Descubrí todos los beneficios exclusivos pensados para estudiantes universitarios. Viajá
+                            tranquilo, nosotros nos encargamos del resto.</p>
+                    </div>
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <div class="icon-box"><i class="ph ph-clock"></i></div>
+                            <h4>Puntualidad</h4>
+                            <p>Llegá siempre a tiempo a tus clases. Nuestra logística inteligente garantiza puntualidad
+                                extrema en cada recorrido.</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="icon-box"><i class="ph ph-shield-check"></i></div>
+                            <h4>Seguridad Primero</h4>
+                            <p>Viajá con tranquilidad. Micros y choferes profesionales certificados.</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="icon-box"><i class="ph ph-calendar-check"></i></div>
+                            <h4>Personaliza tus días</h4>
+                            <p>Elegí qué días querés viajar. Flexibilidad total para adaptarse a tu cronograma
+                                universitario cambiante.</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="icon-box"><i class="ph ph-armchair"></i></div>
+                            <h4>Confort</h4>
+                            <p>Asientos ergonómicos y climatización. Aprovechá el viaje para descansar o estudiar con
+                                total comodidad.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- Footer Principal -->
+        <footer class="main-footer">
+            <div class="footer-container">
+                <!-- Columna 1: Info y Contacto -->
+                <div class="footer-column">
+                    <img src="../assets/logo.png" alt="MoviGO Logo" class="footer-logo">
+                    <p class="footer-desc">Excelencia en transporte de pasajeros. Seguridad, confort y puntualidad en
+                        cada viaje.</p>
+                    <div class="footer-contact">
+                        <a href="mailto:info@movigo.com"><i class="ph ph-envelope-simple"></i> info@movigo.com</a>
+                        <a href="tel:+541112345678"><i class="ph ph-phone"></i> +54 11 1234 5678</a>
+                    </div>
+                </div>
+
+                <!-- Columna 2: Redes Sociales -->
+                <div class="footer-column">
+                    <h4>Síguenos</h4>
+                    <div class="social-links">
+                        <a href="#" aria-label="Instagram"><i class="ph ph-instagram-logo"></i></a>
+                        <a href="#" aria-label="Facebook"><i class="ph ph-facebook-logo"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="ph ph-linkedin-logo"></i></a>
+                    </div>
+                </div>
+
+                <!-- Columna 3: Legal -->
+                <div class="footer-column">
+                    <h4>Legal</h4>
+                    <ul class="footer-links">
+                        <li><a href="#privacidad">Políticas de Privacidad</a></li>
+                        <li><a href="#terminos">Términos y Condiciones</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Copyright -->
+            <div class="footer-bottom">
+                <p>&copy; 2024 MoviGO. Todos los derechos reservados.</p>
+            </div>
+        </footer>
+    </div> <!-- Fin de main-content -->
+    <!-- Funcionalidad GSAP y Menú (Script Externo) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="../script.js"></script>
+    <script src="./universitario.js"></script>
+</body>
+
+</html>
