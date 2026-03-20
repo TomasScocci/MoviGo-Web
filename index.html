@@ -14,47 +14,9 @@
     <link rel="stylesheet" href="styles.css">
     <!-- Phosphor Icons para iconos limpios (menú hamburguesa) -->
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
-    <style>
-        /* Estilos iniciales solo para la landing page (Intro GSAP) */
-        #intro-screen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background-color: var(--color-white);
-            z-index: 9999;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-        }
-
-        .bus-img {
-            width: 100%;
-            max-width: 800px;
-            height: auto;
-            object-fit: contain;
-            opacity: 0;
-            transform: scale(0.05) translateY(50px);
-            will-change: transform, opacity;
-        }
-
-        #main-content {
-            opacity: 0;
-            will-change: opacity, transform;
-        }
-    </style>
 </head>
 
 <body>
-    <!-- Pantalla de Introducción (GSAP) -->
-    <div id="intro-screen">
-        <img src="assets/bus.png" alt="Microbus MoviGO" class="bus-img">
-    </div>
-
-    <!-- Contenido Principal -->
-    <div id="main-content">
 
         <header class="main-header">
             <div class="header-container">
@@ -78,11 +40,7 @@
                         <li><a href="#contacto">Contacto</a></li>
                     </ul>
 
-                    <!-- Acciones de Usuario (dentro del nav para mobile) -->
-                    <div class="user-actions">
-                        <a href="#login" class="btn btn-outline">Iniciar Sesión</a>
-                        <a href="#register" class="btn btn-primary">Registrarse</a>
-                    </div>
+
                 </nav>
             </div>
         </header>
@@ -258,8 +216,7 @@
                                     class="ph-fill ph-star"></i>
                             </div>
                         </div>
-                        <p class="review-content">"MoviGO cambió mi vida. Finalmente puedo estudiar durante el viaje de
-                            1 hora desde Canning a UADE sin preocuparme por nada más."</p>
+                        <p class="review-content">"aca anclaamos el texto de las reseñas."</p>
                     </div>
 
                     <!-- Reseña 2 -->
@@ -278,8 +235,7 @@
                                     class="ph-fill ph-star"></i>
                             </div>
                         </div>
-                        <p class="review-content">"El Wi-Fi es increíblemente rápido. Me he unido a clases de Zoom desde
-                            el micro varias veces sin que se corte. Además, los asientos son comodísimos."</p>
+                        <p class="review-content">"aca anclaamos el texto de las reseñas."</p>
                     </div>
 
                     <!-- Reseña 3 -->
@@ -298,7 +254,7 @@
                                     class="ph-fill ph-star"></i>
                             </div>
                         </div>
-                        <p class="review-content">"Súper confiable e impecable. En dos años, el micro no ha llegado
+                        <p class="review-content">"Súper confiable e impecable. En dos años, el micro no llego
                             tarde ni una sola vez. Los choferes son muy profesionales y atentos."</p>
                     </div>
                 </div>
@@ -389,7 +345,6 @@
                 <p>&copy; 2024 MoviGO. Todos los derechos reservados.</p>
             </div>
         </footer>
-    </div> <!-- Fin de main-content -->
     <!-- Funcionalidad GSAP y Menú (Script Externo) -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>

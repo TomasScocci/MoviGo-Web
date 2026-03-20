@@ -340,8 +340,14 @@ body {
 /* ==========================================================================
    Detailed Route Card (Nordelta -> UADE Search Result)
    ========================================================================== */
-.detailed-route-card {
+
+/* El contenedor dinámico debe ocupar todas las columnas del grid */
+#detailed-routes-container {
     grid-column: 1 / -1;
+    width: 100%;
+}
+
+.detailed-route-card {
     display: flex;
     flex-direction: column;
     padding: 0;
@@ -636,63 +642,10 @@ body {
     background-color: var(--color-status-yellow);
 }
 
-.availability-info {
-    margin-top: 2rem;
-    padding-top: 1.5rem;
-    border-top: 1px solid var(--color-border);
-}
-
-.availability-info .seats {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-size: 1.125rem;
-    font-weight: 600;
-    margin-bottom: 1rem;
-    color: var(--color-black);
-}
-
-.availability-info .seats i {
-    color: var(--color-status-green);
-    font-size: 1.5rem;
-}
-
-.availability-info .seats.out-of-stock {
-    color: var(--color-status-yellow);
-}
-
-.availability-info .seats.out-of-stock i {
-    color: var(--color-status-yellow);
-}
-
-.availability-info .seat-count {
-    color: var(--color-status-green);
-}
-
-.availability-info .seats.out-of-stock .seat-count {
-    color: var(--color-status-yellow);
-}
-
-/* Ocultamos el bloque de reserva principal en el tab de tarde solo si lo duplicamos */
-#tab-ida .availability-info,
-#tab-vuelta .availability-info {
+.reserve-section {
     margin-top: 1.5rem;
     padding-top: 1.5rem;
-}
-
-.main-availability {
-    display: block; /* Visible por defecto */
-}
-
-/* Clase utilidad para botones de espera */
-.waitlist-btn {
-    border-color: var(--color-status-yellow);
-    color: var(--color-status-yellow);
-}
-
-.waitlist-btn:hover {
-    background-color: var(--color-status-yellow);
-    color: var(--color-white);
+    border-top: 1px solid var(--color-border);
 }
 
 .reserve-btn {
@@ -830,3 +783,188 @@ body {
         grid-template-columns: repeat(4, 1fr);
     }
 }
+
+/* ==========================================================================
+   FAQ Section
+   ========================================================================== */
+.faq-section {
+    background-color: var(--color-white);
+    padding: 4rem 1.5rem;
+    border-top: 1px solid var(--color-border);
+}
+
+.faq-container {
+    max-width: 780px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.faq-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.faq-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background-color: var(--color-blue-light, #dbeafe);
+    color: var(--color-blue-primary);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.35rem 0.9rem;
+    border-radius: 999px;
+    margin-bottom: 1rem;
+}
+
+.faq-header h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color-black);
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    margin-bottom: 0.75rem;
+}
+
+.faq-header p {
+    color: var(--color-text-mutted);
+    font-size: 1.0625rem;
+    line-height: 1.6;
+}
+
+/* Acordeón */
+.faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border: 1px solid var(--color-border);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+}
+
+.faq-item {
+    border-bottom: 1px solid var(--color-border);
+}
+
+.faq-item:last-child {
+    border-bottom: none;
+}
+
+.faq-question {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1.25rem 1.5rem;
+    background: var(--color-white);
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-black);
+    transition: background-color 0.2s ease;
+}
+
+.faq-question:hover {
+    background-color: var(--color-bg-light);
+}
+
+.faq-item.open .faq-question {
+    color: var(--color-blue-primary);
+    background-color: var(--color-bg-light);
+}
+
+.faq-icon {
+    flex-shrink: 0;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background-color: var(--color-bg-light);
+    border: 1px solid var(--color-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-blue-primary);
+    font-size: 1rem;
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+                background-color 0.2s ease;
+}
+
+.faq-item.open .faq-icon {
+    transform: rotate(45deg);
+    background-color: var(--color-blue-primary);
+    border-color: var(--color-blue-primary);
+    color: var(--color-white);
+}
+
+/* Respuesta con animación de altura */
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.faq-item.open .faq-answer {
+    max-height: 400px;
+}
+
+.faq-answer-inner {
+    padding: 0 1.5rem 1.5rem;
+    border-top: 1px solid var(--color-border);
+    padding-top: 1rem;
+}
+
+.faq-answer-inner p {
+    font-size: 0.9375rem;
+    color: var(--color-text-mutted);
+    line-height: 1.7;
+    margin: 0;
+}
+
+.faq-answer-inner strong {
+    color: var(--color-black);
+    font-weight: 600;
+}
+
+/* CTA al pie del FAQ */
+.faq-cta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 2.5rem;
+    text-align: center;
+}
+
+.faq-cta p {
+    color: var(--color-text-mutted);
+    font-size: 0.9375rem;
+}
+
+.faq-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9375rem;
+    padding: 0.75rem 1.75rem;
+}
+
+@media screen and (min-width: 768px) {
+    .faq-section {
+        padding: 6rem 1.5rem;
+    }
+    .faq-header h2 {
+        font-size: 2.5rem;
+    }
+    .faq-cta {
+        flex-direction: row;
+        justify-content: center;
+    }
+}
+

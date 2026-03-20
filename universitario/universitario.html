@@ -43,11 +43,7 @@
                         <li><a href="../index.html#contacto">Contacto</a></li>
                     </ul>
 
-                    <!-- Acciones de Usuario (dentro del nav para mobile) -->
-                    <div class="user-actions">
-                        <a href="#login" class="btn btn-outline">Iniciar Sesión</a>
-                        <a href="#register" class="btn btn-primary">Registrarse</a>
-                    </div>
+
                 </nav>
             </div>
         </header>
@@ -107,164 +103,44 @@
                 </div>
 
                 <div class="routes-grid" id="routes-container">
-                    <!-- NUEVO: Tarjeta Detallada Nordelta -> UADE (Oculta por defecto) -->
-                    <div class="route-card detailed-route-card" data-origin="nordelta" data-dest="uade"
-                        style="display: none;">
-                        <div class="detailed-card-header">
-                            <div class="detailed-route-title">
-                                <h3>Nordelta <i class="ph ph-arrow-right"></i> UADE</h3>
-                            </div>
-                            <div class="detailed-route-summary">
-                                <span><i class="ph-fill ph-map-pin"></i> 12 Paradas</span>
-                            </div>
-                        </div>
+                    <!-- Contenedor dinámico para tarjetas detalladas -->
+                    <div id="detailed-routes-container"></div>
 
-                        <div class="detailed-card-body">
-                            <!-- Left col: map -->
-                            <div class="detailed-map-container">
-                                <img src="./mapas/mapa_nordelta_uade.jpg" alt="Mapa Nordelta a UADE"
-                                    class="actual-map-img">
+                    <!-- TEMPLATE: Tarjeta Detallada (Inspirada en React / Component-driven) -->
+                    <template id="detailed-route-template">
+                        <div class="route-card detailed-route-card" data-origin="" data-dest="" style="display: none;">
+                            <div class="detailed-card-header">
+                                <div class="detailed-route-title">
+                                    <h3 class="route-title-text"></h3>
+                                </div>
+                                <div class="detailed-route-summary">
+                                    <span><i class="ph-fill ph-map-pin"></i> <span class="stops-count"></span>
+                                        Paradas</span>
+                                </div>
                             </div>
 
-                            <!-- Right col: schedules & stops -->
-                            <div class="detailed-schedule-container">
-                                <div class="schedule-tabs">
-                                    <button class="tab-btn active" data-tab="ida">Turno Mañana</button>
-                                    <button class="tab-btn" data-tab="vuelta">Turno Tarde</button>
+                            <div class="detailed-card-body">
+                                <div class="detailed-map-container">
+                                    <img src="" alt="" class="actual-map-img">
                                 </div>
 
-                                <div class="tab-content active" id="tab-ida">
-                                    <ul class="timeline scrollable-timeline">
-                                        <li>
-                                            <div class="time">06:05</div>
-                                            <div class="stop">Santa Barbara</div>
-                                        </li>
-                                        <li>
-                                            <div class="time">06:09</div>
-                                            <div class="stop">La Isla</div>
-                                        </li>
-                                        <li>
-                                            <div class="time">06:11</div>
-                                            <div class="stop">Cabos del Lago</div>
-                                        </li>
-                                        <li>
-                                            <div class="time">06:13</div>
-                                            <div class="stop">La Alameda</div>
-                                        </li>
-                                        <li>
-                                            <div class="time">06:15</div>
-                                            <div class="stop">Alisos</div>
-                                        </li>
-                                        <li>
-                                            <div class="time">06:18</div>
-                                            <div class="stop">Castores</div>
-                                        </li>
-                                        <li>
-                                            <div class="time">06:20</div>
-                                            <div class="stop">Centro Comercial</div>
-                                        </li>
-                                        <li>
-                                            <div class="time">06:23</div>
-                                            <div class="stop">Altamira</div>
-                                        </li>
-                                        <li>
-                                            <div class="time">06:26</div>
-                                            <div class="stop">Kansas</div>
-                                        </li>
-                                        <li>
-                                            <div class="time">06:30</div>
-                                            <div class="stop">Rincon de la Costa</div>
-                                        </li>
-                                        <li>
-                                            <div class="time">06:39</div>
-                                            <div class="stop">Punto Tigre</div>
-                                        </li>
-                                        <li>
-                                            <div class="time">07:30</div>
-                                            <div class="stop">UADE</div>
-                                        </li>
-                                        <li class="return-stop">
-                                            <div class="time">12:20</div>
-                                            <div class="stop">Vuelta</div>
-                                        </li>
-                                    </ul>
-                                </div>
-
-                                <div class="tab-content" id="tab-vuelta" style="display: none;">
-                                    <ul class="timeline scrollable-timeline">
-                                        <li>
-                                            <div class="time">06:05</div>
-                                            <div class="stop">Santa Barbara</div>
-                                        </li>
-                                        <li>
-                                            <div class="time">06:09</div>
-                                            <div class="stop">La Isla</div>
-                                        </li>
-                                        <li>
-                                            <div class="time">06:11</div>
-                                            <div class="stop">Cabos del Lago</div>
-                                        </li>
-                                        <li>
-                                            <div class="time">06:13</div>
-                                            <div class="stop">La Alameda</div>
-                                        </li>
-                                        <li>
-                                            <div class="time">06:15</div>
-                                            <div class="stop">Alisos</div>
-                                        </li>
-                                        <li>
-                                            <div class="time">06:18</div>
-                                            <div class="stop">Castores</div>
-                                        </li>
-                                        <li>
-                                            <div class="time">06:20</div>
-                                            <div class="stop">Centro Comercial</div>
-                                        </li>
-                                        <li>
-                                            <div class="time">06:23</div>
-                                            <div class="stop">Altamira</div>
-                                        </li>
-                                        <li>
-                                            <div class="time">06:26</div>
-                                            <div class="stop">Kansas</div>
-                                        </li>
-                                        <li>
-                                            <div class="time">06:30</div>
-                                            <div class="stop">Rincon de la Costa</div>
-                                        </li>
-                                        <li>
-                                            <div class="time">06:39</div>
-                                            <div class="stop">Punto Tigre</div>
-                                        </li>
-                                        <li>
-                                            <div class="time">07:30</div>
-                                            <div class="stop">UADE</div>
-                                        </li>
-                                        <li class="return-stop">
-                                            <div class="time">12:20</div>
-                                            <div class="stop">Vuelta</div>
-                                        </li>
-                                    </ul>
-                                    <div class="availability-info">
-                                        <div class="seats out-of-stock">
-                                            <i class="ph-fill ph-warning-circle"></i>
-                                            <span class="seat-count">0</span> Lugares disponibles
-                                        </div>
-                                        <button class="btn btn-outline w-full waitlist-btn">Unirse a la lista de
-                                            espera</button>
+                                <div class="detailed-schedule-container">
+                                    <div class="schedule-tabs">
+                                        <!-- Los botones de tabs se generarán aquí -->
                                     </div>
-                                </div>
 
-                                <div class="availability-info main-availability">
-                                    <div class="seats">
-                                        <i class="ph-fill ph-user-circle"></i>
-                                        <span class="seat-count">4</span> Lugares disponibles
+                                    <div class="tabs-content-wrapper">
+                                        <!-- El contenido de las pestañas se generará aquí -->
                                     </div>
-                                    <button class="btn btn-primary w-full reserve-btn">Reservar lugar</button>
+
+                                    <div class="reserve-section">
+                                        <a class="btn btn-primary w-full reserve-btn" href="" target="_blank">Reservar
+                                            lugar</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </template>
                 </div>
             </section>
 
@@ -305,6 +181,118 @@
             </section>
 
         </main>
+
+        <!-- ============================================================
+             Sección de Preguntas Frecuentes (FAQ)
+             ============================================================ -->
+        <section class="faq-section" id="faq-section">
+            <div class="faq-container">
+                <div class="faq-header">
+                    <span class="faq-badge">
+                        <i class="ph ph-question"></i> FAQ
+                    </span>
+                    <h2>Preguntas <span class="highlight-blue">Frecuentes</span></h2>
+                    <p>Todo lo que necesitás saber antes de subirte a tu primer viaje.</p>
+                </div>
+
+                <div class="faq-list" id="faq-list">
+
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span>¿Cómo reservo mi lugar en el micro?</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-inner">
+                                <p>Podés reservar tu lugar directamente desde esta página haciendo clic en el botón
+                                    <strong>"Reservar lugar"</strong> que aparece en la tarjeta de tu ruta. Eso te va a
+                                    redirigir a un chat de WhatsApp con nuestro equipo, donde te guiaremos en el
+                                    proceso.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span>¿Puedo elegir solo ciertos días de la semana para viajar?</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-inner">
+                                <p>¡Sí! Ofrecemos total flexibilidad. Podés contratar el servicio por los días que más
+                                    te convienen (lunes a viernes, o días específicos). Consultanos y armamos un plan a
+                                    tu medida.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span>¿Qué pasa si el micro se atrasa?</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-inner">
+                                <p>Ante cualquier imprevisto, te notificamos en tiempo real por WhatsApp. Nuestro
+                                    compromiso de puntualidad es nuestra principal prioridad, pero entendemos que pueden
+                                    surgir situaciones excepcionales de tránsito.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span>¿Cuántos pasajeros entran en el micro?</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-inner">
+                                <p>Nuestros micros tienen capacidad para <strong>hasta 20 pasajeros</strong>. Los
+                                    lugares son limitados, así que recomendamos reservar con anticipación para
+                                    garantizar tu asiento.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span>¿El servicio opera durante los feriados?</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-inner">
+                                <p>El servicio opera los días <strong>hábiles de la universidad</strong>. En caso de
+                                    feriados o recesos académicos, notificamos con anticipación a través de nuestro
+                                    grupo de WhatsApp.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span>¿Cómo cancelo o modifico mi reserva?</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-inner">
+                                <p>Podés cancelar o modificar tu reserva contactándonos por WhatsApp con al menos
+                                    <strong>24 horas de anticipación</strong>. Fuera de ese plazo, consultanos caso a
+                                    caso.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="faq-cta">
+                    <p>¿No encontraste lo que buscabas?</p>
+                    <a href="https://wa.me/541162639058?text=Hola!%20Tengo%20una%20consulta%20sobre%20el%20servicio%20universitario."
+                        class="btn btn-primary faq-cta-btn" target="_blank">
+                        <i class="ph ph-whatsapp-logo"></i> Contactanos directamente
+                    </a>
+                </div>
+            </div>
+        </section>
 
         <!-- Footer Principal -->
         <footer class="main-footer">

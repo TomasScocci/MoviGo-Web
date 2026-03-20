@@ -1,70 +1,13 @@
-// Animación de Entrada GSAP
 document.addEventListener("DOMContentLoaded", () => {
-    const introScreen = document.getElementById("intro-screen");
-    const mainContent = document.getElementById("main-content");
-
-    // Si no hay intro-screen en esta página (ej: páginas secundarias), 
-    // nos aseguramos de que el contenido principal sea visible y salimos.
-    if (!introScreen) {
-        if (mainContent) {
-            mainContent.style.opacity = "1";
-            mainContent.style.transform = "none";
-        }
-        sessionStorage.setItem("introPlayed", "true"); // Marcar como visto aunque estemos en subpágina
-        // Opcional: inicializar slider si existe en la página
-        if (typeof initSlider === 'function' && document.querySelector('.hero-slider')) {
-            initSlider();
-        }
-        if (typeof initScrollAnimations === 'function') {
-            initScrollAnimations();
-        }
-        return;
+    // Iniciar slider directamente
+    if (typeof initSlider === 'function' && document.querySelector('.hero-slider')) {
+        initSlider();
     }
-
-    // Verificar si la animación ya se ejecutó en esta sesión
-    if (sessionStorage.getItem("introPlayed")) {
-        // Si ya se ejecutó, ocultamos el intro y mostramos el contenido de golpe
-        introScreen.style.display = "none";
-        if (mainContent) {
-            mainContent.style.opacity = "1";
-            mainContent.style.transform = "none";
-        }
-        initSlider(); // Iniciamos el slider directamente
-        if (typeof initScrollAnimations === 'function') {
-            initScrollAnimations();
-        }
-        return;
+    if (typeof initScrollAnimations === 'function') {
+        initScrollAnimations();
     }
-
-    // Si es la primera vez en la sesión y estamos en la landing con intro, ejecutamos
-    const tl = gsap.timeline();
-
-    // Animamos el microbus (Efecto acercándose/Zoom in)
-    tl.fromTo(".bus-img", 
-        { scale: 0.05, opacity: 0, y: 50 }, 
-        { scale: 5, opacity: 1, y: 0, duration: 2.5, ease: "power3.in" }
-    )
-    // Desaparece el overlay contenedor del bus
-    .to("#intro-screen", {
-        opacity: 0, 
-        duration: 0.6,
-        ease: "power2.inOut",
-        onComplete: () => {
-            introScreen.style.display = "none";
-            sessionStorage.setItem("introPlayed", "true"); // Guardamos que ya se vió
-            initSlider(); // Iniciamos el slider después de la animación de entrada
-            if (typeof initScrollAnimations === 'function') {
-                initScrollAnimations();
-            }
-        }
-    })
-    // Aparece el sitio MoviGO
-    .fromTo("#main-content", 
-        { opacity: 0, y: 30 },
-        { opacity: 1, y: 0, duration: 1, ease: "power2.out" },
-        "-=0.3"
-    );
 });
+
 
 // Lógica del Slider Hero
 function initSlider() {

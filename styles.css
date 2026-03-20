@@ -105,19 +105,22 @@ button {
    Header Mobile First
    ========================================================================== */
 .main-header {
-    background-color: var(--color-white);
-    box-shadow: var(--shadow-sm);
+    background-color: rgba(255, 255, 255, 0.85); /* Translúcido para ese look premium */
+    backdrop-filter: blur(12px); /* Efecto Glassmorphism moderno */
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03); /* Sombra más suave y moderna */
     position: sticky;
     top: 0;
     z-index: 1000;
-    border-bottom: 1px solid var(--color-gray-light);
+    border-bottom: 1px solid rgba(229, 231, 235, 0.5); /* Borde más sutil */
+    transition: all var(--transition-normal);
 }
 
 .header-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 1.5rem;
+    padding: 0.75rem 1.5rem; /* Reducido ligeramente para balancear el logo más grande */
     max-width: 1280px;
     margin: 0 auto;
 }
@@ -129,10 +132,20 @@ button {
 }
 
 .logo-img {
-    height: 40px;
-    /* TamaÃ±o estÃ¡ndar para un header */
+    height: 75px; /* Aumentado de 55px para un impacto visual máximo */
     width: auto;
     display: block;
+    transition: transform var(--transition-fast);
+}
+
+.logo:hover .logo-img {
+    transform: scale(1.03); /* Escala ligeramente menor para logos ya grandes */
+}
+
+@media screen and (max-width: 768px) {
+    .logo-img {
+        height: 55px; /* Más grande en móviles también */
+    }
 }
 
 /* BotÃ³n menÃº mÃ³vil */
@@ -190,13 +203,7 @@ button {
     color: var(--color-blue-primary);
 }
 
-/* Acciones en mÃ³vil */
-.user-actions {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-    padding: 1.5rem;
-}
+
 
 /* ==========================================================================
    Media Queries (Desktop >= 992px)
@@ -246,15 +253,7 @@ button {
         width: 100%;
     }
 
-    .user-actions {
-        flex-direction: row;
-        padding: 0;
-        gap: 1rem;
-        align-items: center;
-        margin-left: 1rem;
-        border-left: 1px solid var(--color-gray-light);
-        padding-left: 2rem;
-    }
+
 }
 
 /* ==========================================================================
@@ -1027,10 +1026,11 @@ button {
     }
 
     .footer-logo {
-        height: 48px;
+        height: 80px; /* Incrementado para igualar el protagonismo del logo de cabecera */
         width: auto;
         object-fit: contain;
-        align-self: center;
+        align-self: flex-start;
+        margin-bottom: 1rem;
     }
 
     .footer-desc {
