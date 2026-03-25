@@ -19,6 +19,19 @@ body {
     background-color: var(--color-bg-light);
 }
 
+/* Header Adjustments for subpage (Nav Link Active) */
+.nav-links a.active {
+    color: var(--color-blue-primary);
+    font-weight: 600;
+}
+
+@media screen and (min-width: 992px) {
+    .nav-links a.active::after {
+        width: 100%;
+        background-color: var(--color-blue-primary);
+    }
+}
+
 /* ==========================================================================
    Hero Section
    ========================================================================== */
@@ -62,9 +75,11 @@ body {
     .uni-hero {
         padding: 5rem 1.5rem 10rem;
     }
+
     .uni-hero-content h1 {
         font-size: 3.5rem;
     }
+
     .uni-hero-content p {
         font-size: 1.25rem;
     }
@@ -147,10 +162,12 @@ body {
 
 .search-btn {
     padding: 0.875rem 2rem;
-    height: 48px; /* Match input height */
+    height: 48px;
+    /* Match input height */
     font-size: 1rem;
     gap: 0.5rem;
-    border-radius: 8px; /* Less pill-like for this form */
+    border-radius: 8px;
+    /* Less pill-like for this form */
 }
 
 @media screen and (max-width: 767px) {
@@ -233,7 +250,7 @@ body {
     height: 180px;
     position: relative;
     background-color: #e5e5f7;
-    background-image:  repeating-radial-gradient( circle at 0 0, transparent 0, #e5e5f7 10px ), repeating-linear-gradient( #f7f7fc55, #f7f7fc );
+    background-image: repeating-radial-gradient(circle at 0 0, transparent 0, #e5e5f7 10px), repeating-linear-gradient(#f7f7fc55, #f7f7fc);
     overflow: hidden;
 }
 
@@ -241,7 +258,8 @@ body {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    opacity: 0.6; /* Solo para simular un mapa cargando */
+    opacity: 0.6;
+    /* Solo para simular un mapa cargando */
 }
 
 .status-badge {
@@ -333,6 +351,7 @@ body {
 .w-full {
     width: 100%;
 }
+
 .mt-2 {
     margin-top: 0.5rem;
 }
@@ -490,7 +509,7 @@ body {
 .tab-btn.active {
     background: var(--color-white);
     color: var(--color-blue-primary);
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
 .timeline {
@@ -499,7 +518,8 @@ body {
     margin: 0;
     position: relative;
     flex-grow: 1;
-    --scroll-active: 0; /* Variable q actualizará JS */
+    --scroll-active: 0;
+    /* Variable q actualizará JS */
 }
 
 /* Línea base gris */
@@ -508,7 +528,7 @@ body {
     position: absolute;
     top: 10px;
     bottom: 20px;
-    left: 65px; 
+    left: 65px;
     width: 2px;
     background-color: var(--color-border);
     z-index: 0;
@@ -533,7 +553,8 @@ body {
     align-items: flex-start;
     margin-bottom: 1.5rem;
     position: relative;
-    z-index: 2; /* Por encima de las pseudo-lineas */
+    z-index: 2;
+    /* Por encima de las pseudo-lineas */
 }
 
 .timeline li:last-child {
@@ -541,19 +562,21 @@ body {
 }
 
 .timeline .time {
-    width: 75px; 
+    width: 75px;
     font-weight: 700;
     font-size: 0.95rem;
-    color: var(--color-text-mutted); /* Gris por defecto */
+    color: var(--color-text-mutted);
+    /* Gris por defecto */
     padding-top: 2px;
     transition: color 0.3s ease;
 }
 
 .timeline .stop {
     flex: 1;
-    padding-left: 2rem; 
+    padding-left: 2rem;
     position: relative;
-    color: var(--color-text-mutted); /* Gris por defecto */
+    color: var(--color-text-mutted);
+    /* Gris por defecto */
     font-weight: 500;
     transition: color 0.3s ease;
 }
@@ -561,20 +584,22 @@ body {
 .timeline .stop::before {
     content: '';
     position: absolute;
-    left: -15.5px; 
+    left: -15.5px;
     top: 6px;
     width: 12px;
     height: 12px;
     border-radius: 50%;
     background-color: var(--color-white);
-    border: 2px solid var(--color-border); /* Gris por defecto */
+    border: 2px solid var(--color-border);
+    /* Gris por defecto */
     z-index: 2;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* Efecto Mágico al Scrollear (.active) */
 .timeline li.active .time {
-    color: var(--color-black); /* Resalta la hora */
+    color: var(--color-black);
+    /* Resalta la hora */
 }
 
 .timeline li.active .stop {
@@ -585,7 +610,8 @@ body {
 .timeline li.active .stop::before {
     border-color: var(--color-blue-primary);
     background-color: var(--color-white);
-    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.2); /* Glow sutil */
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.2);
+    /* Glow sutil */
 }
 
 /* Scroll para línea de tiempo larga */
@@ -593,7 +619,8 @@ body {
     max-height: 280px;
     overflow-y: auto;
     padding-right: 15px;
-    margin-right: -10px; /* para compensar el padding del scroll */
+    margin-right: -10px;
+    /* para compensar el padding del scroll */
     scrollbar-width: thin;
     scrollbar-color: #cbd5e1 transparent;
 }
@@ -762,9 +789,11 @@ body {
     .uni-features-section {
         padding: 5rem 1.5rem;
     }
+
     .features-header h2 {
         font-size: 2.5rem;
     }
+
     .features-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 2rem;
@@ -776,9 +805,11 @@ body {
     .uni-features-section {
         padding: 6rem 1.5rem;
     }
+
     .features-header {
         margin-bottom: 2rem;
     }
+
     .features-grid {
         grid-template-columns: repeat(4, 1fr);
     }
@@ -842,7 +873,7 @@ body {
     border: 1px solid var(--color-border);
     border-radius: 16px;
     overflow: hidden;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
 }
 
 .faq-item {
@@ -893,7 +924,7 @@ body {
     color: var(--color-blue-primary);
     font-size: 1rem;
     transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1),
-                background-color 0.2s ease;
+        background-color 0.2s ease;
 }
 
 .faq-item.open .faq-icon {
@@ -959,12 +990,13 @@ body {
     .faq-section {
         padding: 6rem 1.5rem;
     }
+
     .faq-header h2 {
         font-size: 2.5rem;
     }
+
     .faq-cta {
         flex-direction: row;
         justify-content: center;
     }
 }
-

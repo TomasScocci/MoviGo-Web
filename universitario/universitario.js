@@ -22,9 +22,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 stops: [
                     "Santa Barbara", "La Isla", "Cabos del Lago", "La Alameda",
                     "Alisos", "Castores", "Centro Comercial", "Altamira",
-                    "Kansas", "Rincon de la Costa", "Punto Tigre"
+                    "Kansas", "Rincon de la Costa", "Punto Tigre", "Tomkinson y Ramal Tigre"
                 ],
-                times: ["06:05", "06:09", "06:11", "06:13", "06:15", "06:18", "06:20", "06:23", "06:26", "06:30", "06:39"]
+                times: ["06:05", "06:09", "06:11", "06:13", "06:15", "06:18", "06:20", "06:23", "06:26", "06:30", "06:39", "06:49"]
             },
             "uca": {
                 name: "Nordelta - UCA",
