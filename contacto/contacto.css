@@ -1,0 +1,334 @@
+/* ==========================================================================
+   ConfiguraciÃ³n EspecÃ­fica Contacto
+   ========================================================================== */
+:root {
+    --wa-green: #25d366;
+    --wa-green-dark: #128c7e;
+    --glass-bg: rgba(255, 255, 255, 0.7);
+    --glass-border: rgba(255, 255, 255, 0.4);
+    --premium-blue: #0a4d8c;
+    --luxury-gold: #c5a059;
+}
+
+
+/* Header Adjustments for subpage (Nav Link Active) */
+.nav-links a.active {
+    color: var(--color-blue-primary);
+    font-weight: 600;
+}
+
+@media screen and (min-width: 992px) {
+    .nav-links a.active::after {
+        width: 100%;
+        background-color: var(--color-blue-primary);
+    }
+}
+
+
+
+/* ==========================================================================
+   Base & Main Container
+   ========================================================================== */
+.contacto-main {
+    min-height: 100vh;
+    background-color: var(--color-white);
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Background Animated Mesh */
+.contacto-main::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background:
+        radial-gradient(circle at 0% 0%, rgba(10, 77, 140, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 100% 0%, rgba(37, 211, 102, 0.05) 0%, transparent 40%),
+        radial-gradient(circle at 50% 50%, rgba(10, 77, 140, 0.03) 0%, transparent 50%),
+        radial-gradient(circle at 100% 100%, rgba(10, 77, 140, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 0% 100%, rgba(37, 211, 102, 0.05) 0%, transparent 40%);
+    z-index: -1;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+/* ==========================================================================
+   Hero Section
+   ========================================================================== */
+.contacto-hero {
+    position: relative;
+    padding: 6rem 1.5rem 4rem;
+    text-align: center;
+    background-color: var(--premium-blue);
+    color: var(--color-white);
+    overflow: hidden;
+}
+
+.hero-bg-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(10, 77, 140, 0.9) 0%, rgba(7, 58, 107, 0.95) 100%);
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.contacto-hero h1 {
+    font-family: var(--font-secondary);
+    font-size: 2.75rem;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+}
+
+.contacto-hero p {
+    font-size: 1.25rem;
+    opacity: 0.9;
+    font-weight: 300;
+    line-height: 1.6;
+}
+
+/* ==========================================================================
+   WhatsApp Section (Main Action)
+   ========================================================================== */
+.whatsapp-section {
+    padding: 4rem 1.5rem;
+    margin-top: -3rem;
+    position: relative;
+    z-index: 10;
+}
+
+.wa-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: 30px;
+    padding: 3rem 2rem;
+    text-align: center;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: 0 auto;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.wa-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 30px 60px -15px rgba(37, 211, 102, 0.15);
+}
+
+.wa-icon-wrapper {
+    width: 90px;
+    height: 90px;
+    background: linear-gradient(135deg, var(--wa-green) 0%, var(--wa-green-dark) 100%);
+    color: var(--color-white);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3.5rem;
+    margin: 0 auto 2rem;
+    box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3);
+}
+
+.wa-card h2 {
+    font-family: var(--font-secondary);
+    font-size: 2rem;
+    color: var(--color-blue-dark);
+    margin-bottom: 1rem;
+}
+
+.wa-card p {
+    color: var(--color-gray-dark);
+    font-size: 1.1rem;
+    margin-bottom: 2.5rem;
+    line-height: 1.6;
+}
+
+/* Button WA Premium */
+.btn-wa {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    background: linear-gradient(to right, var(--wa-green), var(--wa-green-dark));
+    color: var(--color-white);
+    padding: 1.25rem 2.5rem;
+    border-radius: 50px;
+    font-size: 1.15rem;
+    font-weight: 600;
+    text-decoration: none;
+    box-shadow: 0 15px 30px rgba(37, 211, 102, 0.3);
+    transition: all 0.3s ease;
+    border: none;
+    width: 100%;
+}
+
+.btn-wa:hover {
+    transform: scale(1.03);
+    box-shadow: 0 20px 40px rgba(37, 211, 102, 0.4);
+    filter: brightness(1.1);
+}
+
+.btn-wa i {
+    font-size: 1.25rem;
+}
+
+/* Pulse Effect Animation */
+.pulse-effect {
+    animation: pulse-wa 2s infinite;
+}
+
+@keyframes pulse-wa {
+    0% {
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.4);
+    }
+
+    70% {
+        box-shadow: 0 0 0 20px rgba(37, 211, 102, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+    }
+}
+
+/* ==========================================================================
+   Secondary Contact Grid
+   ========================================================================== */
+.secondary-contact {
+    padding: 4rem 1.5rem 8rem;
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+
+.contact-method {
+    background: var(--color-white);
+    padding: 2.5rem 2rem;
+    border-radius: 24px;
+    text-align: center;
+    border: 1px solid var(--color-blue-light);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+    transition: all 0.3s ease;
+}
+
+.contact-method:hover {
+    transform: translateY(-5px);
+    border-color: var(--color-blue-primary);
+    box-shadow: 0 15px 40px rgba(10, 77, 140, 0.08);
+}
+
+.method-icon {
+    width: 60px;
+    height: 60px;
+    background-color: var(--color-blue-light);
+    color: var(--color-blue-primary);
+    border-radius: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    margin: 0 auto 1.5rem;
+}
+
+.contact-method h3 {
+    font-size: 1.25rem;
+    color: var(--color-blue-dark);
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+}
+
+.contact-method p {
+    color: var(--color-gray-dark);
+    margin-bottom: 0.25rem;
+    font-size: 1rem;
+}
+
+.method-link {
+    display: inline-block;
+    margin-top: 1rem;
+    color: var(--color-blue-primary);
+    font-weight: 600;
+    font-size: 0.95rem;
+    position: relative;
+    padding-bottom: 2px;
+}
+
+.method-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: var(--color-blue-primary);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s ease;
+}
+
+.method-link:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+@media screen and (min-width: 768px) {
+    .contacto-hero {
+        padding: 10rem 1.5rem 8rem;
+    }
+
+    .contacto-hero h1 {
+        font-size: 4rem;
+    }
+
+    .contact-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .wa-card {
+        padding: 4rem;
+    }
+
+    .btn-wa {
+        width: auto;
+    }
+}
+
+/* ==========================================================================
+   Animations Base (for JS triggers)
+   ========================================================================== */
+.reveal-text {
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.reveal-up {
+    opacity: 0;
+    transform: translateY(50px);
+}
+
+.delay-1 {
+    transition-delay: 200ms;
+}

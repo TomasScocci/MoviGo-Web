@@ -36,15 +36,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Efectos simples de entrada en las cards usando GSAP (si está disponible desde index)
-    if (typeof gsap !== 'undefined') {
-        gsap.from('.service-option-card', {
-            y: 50,
-            opacity: 0,
-            duration: 0.8,
-            stagger: 0.2,
-            ease: "power2.out",
-            delay: 0.2
-        });
-    }
+    // Comento la animación de GSAP porque conflictúa con los transform: hover de CSS
+    // y dejaba desalineadas las tarjetas. Ahora se anima por CSS (animacion: fadeInUp)
 });

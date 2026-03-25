@@ -177,24 +177,7 @@ function initScrollAnimations() {
         );
     }
 
-    // 3. Reviews Reveal
-    const reviews = gsap.utils.toArray('.modern-review-card');
-    if (reviews.length > 0) {
-        gsap.fromTo(reviews,
-            { y: 40, opacity: 0 },
-            {
-                y: 0,
-                opacity: 1,
-                duration: 0.8,
-                stagger: 0.15,
-                ease: "power2.out",
-                scrollTrigger: {
-                    trigger: '.reviews-section, .movigo-reviews-section',
-                    start: "top 75%",
-                }
-            }
-        );
-    }
+
 
     // 4. Team Section Parallax y Reveal
     const teamSection = document.querySelector('.team-section');

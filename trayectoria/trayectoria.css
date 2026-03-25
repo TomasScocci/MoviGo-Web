@@ -1,0 +1,289 @@
+/* =========================================
+   TRAYECTORIA ESTILOS - Diseño Ligero y Corporativo
+   ========================================= */
+
+/* Header Adjustments for subpage (Nav Link Active) */
+.nav-links a.active {
+    color: var(--color-blue-primary);
+    font-weight: 600;
+}
+
+@media screen and (min-width: 992px) {
+    .nav-links a.active::after {
+        width: 100%;
+        background-color: var(--color-blue-primary);
+    }
+}
+
+
+
+/* Hero Section - Alineado con diseño general Light */
+.trayectoria-hero {
+    position: relative;
+    padding: 8rem 2rem 5rem;
+    text-align: center;
+    background: linear-gradient(to bottom, var(--color-gray-light) 0%, var(--color-blue-light) 100%);
+    overflow: hidden;
+    color: var(--color-black);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.trayectoria-hero h1 {
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-family: var(--font-secondary);
+    margin-bottom: 1rem;
+    color: var(--color-blue-dark);
+    line-height: 1.1;
+    animation: fadeInDown 0.8s ease-out;
+}
+
+.trayectoria-hero p {
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    color: var(--color-gray-dark);
+    line-height: 1.6;
+    animation: fadeIn 1s ease-out 0.3s backwards;
+}
+
+
+/* Base de la Sección Timeline */
+.timeline-section {
+    background-color: var(--color-blue-light);
+    padding: 3rem 1rem 6rem;
+    overflow-x: hidden;
+}
+
+.timeline-container {
+    position: relative;
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 2rem 0;
+}
+
+/* La línea ondulada de fondo usando un SVG S-curve (Wavy Line) corporativa */
+.timeline-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    /* En mobile va a la izquierda */
+    left: 20px;
+    width: 40px;
+    transform: translateX(-50%);
+    /* SVG repetitivo ondulado - Stroke color: #0a4d8c (%230a4d8c) */
+    background: url("data:image/svg+xml,%3Csvg width='40' height='200' viewBox='0 0 40 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M 20 0 C 40 50, 0 150, 20 200' fill='transparent' stroke='%230a4d8c' stroke-width='3' opacity='0.25' stroke-dasharray='8 6'/%3E%3C/svg%3E") repeat-y center;
+    z-index: 1;
+}
+
+/* Cada ítem de la línea de tiempo */
+.timeline-item {
+    position: relative;
+    margin-bottom: 4rem;
+    padding-left: 55px;
+    /* Espacio para separar la tarjeta de la línea */
+    /* Estado inicial para animación invisible */
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.timeline-item.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* El punto conector (nodo) */
+.timeline-dot {
+    position: absolute;
+    left: 20px;
+    /* Centrado en el path (container::before align axis) */
+    top: 35px;
+    width: 20px;
+    height: 20px;
+    background: var(--color-white);
+    border-radius: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    box-shadow: 0 0 10px rgba(10, 77, 140, 0.15);
+    border: 4px solid var(--color-blue-primary);
+    transition: all 0.4s ease;
+}
+
+.timeline-item:hover .timeline-dot {
+    background: var(--color-blue-primary);
+    transform: translateX(-50%) scale(1.3);
+    box-shadow: 0 0 15px rgba(10, 77, 140, 0.3);
+}
+
+/* La Tarjeta (Look Corporativo MoviGO) */
+.timeline-card {
+    background-color: var(--color-white);
+    border-radius: 24px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 20px 40px -10px rgba(10, 77, 140, 0.08);
+    transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+    border: none;
+    text-align: left;
+}
+
+.timeline-item:hover .timeline-card {
+    transform: translateY(-8px);
+    box-shadow: 0 30px 60px -15px rgba(10, 77, 140, 0.15);
+}
+
+.timeline-image-container {
+    width: 100%;
+    height: 220px;
+    overflow: hidden;
+}
+
+.timeline-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.7s ease;
+}
+
+.timeline-item:hover .timeline-image {
+    transform: scale(1.05);
+    /* Zoom sutil en hover */
+}
+
+.timeline-content {
+    padding: 2rem;
+    color: var(--color-black);
+}
+
+.timeline-header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.timeline-date {
+    display: inline-block;
+    padding: 0.35rem 1rem;
+    background: var(--color-blue-light);
+    color: var(--color-blue-primary);
+    border-radius: 50px;
+    font-size: 0.875rem;
+    font-weight: 600;
+}
+
+.timeline-content h3 {
+    font-size: 1.5rem;
+    font-family: var(--font-secondary);
+    margin: 0;
+    color: var(--color-blue-dark);
+}
+
+.timeline-content p {
+    color: var(--color-gray-dark);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    font-size: 1rem;
+}
+
+.timeline-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--color-blue-primary);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s;
+    font-size: 0.95rem;
+}
+
+.timeline-link:hover {
+    color: var(--color-blue-dark);
+}
+
+.timeline-link i {
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.timeline-link:hover i {
+    transform: translateX(5px);
+}
+
+/* =========================================
+   MEDIA QUERIES - DESKTOP LAYOUT
+   ========================================= */
+@media (min-width: 768px) {
+    .timeline-container::before {
+        /* Centrar la línea base ondulada */
+        left: 50%;
+    }
+
+    .timeline-item {
+        width: 50%;
+        margin-bottom: -60px;
+        /* Superposición sutil vertical para look conectado */
+    }
+
+    .timeline-item:last-child {
+        margin-bottom: 0;
+    }
+
+    /* Elementos impares (Izquierda) */
+    .timeline-item:nth-child(odd) {
+        padding-right: 55px;
+        /* Separación de la línea central */
+        padding-left: 0;
+        text-align: right;
+    }
+
+    .timeline-item:nth-child(odd) .timeline-header {
+        align-items: flex-end;
+        /* Alinear fecha a la derecha */
+    }
+
+    /* Elementos pares (Derecha) */
+    .timeline-item:nth-child(even) {
+        margin-left: 50%;
+        padding-left: 55px;
+        text-align: left;
+        transform: translateY(80px);
+        /* Stagger asimétrico inicial */
+    }
+
+    .timeline-item:nth-child(even).visible {
+        transform: translateY(0);
+    }
+
+    /* Ubicación de los puntos conectores */
+    .timeline-item:nth-child(odd) .timeline-dot {
+        left: 100%;
+        right: auto;
+    }
+
+    .timeline-item:nth-child(even) .timeline-dot {
+        left: 0;
+        right: auto;
+    }
+}
+
+@media (min-width: 1024px) {
+    .timeline-content h3 {
+        font-size: 1.75rem;
+    }
+
+    .timeline-image-container {
+        height: 280px;
+    }
+
+    .timeline-item {
+        margin-bottom: -40px;
+    }
+}
