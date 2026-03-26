@@ -7,33 +7,54 @@ document.addEventListener("DOMContentLoaded", () => {
     // Array de datos - Fácilmente editable para agregar nuevos puntos
     const trayectoriaData = [
         {
-            title: "El comienzo del viaje",
-            date: "Septiembre 2018",
-            image: "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&q=80&w=800",
-            description: "Nuestra fundadora identificó una necesidad insatisfecha en el transporte corporativo y de eventos, lanzando la primera flota con tan solo dos vehículos pero con una visión inquebrantable de calidad y puntualidad.",
-            link: "#"
+            title: "La creación de MoviGO",
+            date: "Marzo 2023",
+            image: "imagenes/infobae.jpg",
+            description: "MoviGO nace con el objetivo de ofrecer un servicio de transporte seguro, cómodo y confiable para estudiantes. Viendo que muchos estudiantes tenian problemas para llegar a las universidades de capital desde provincia, teniendo que hacer combinaciones de trenes, subtes y colectivos o haciendo pool.",
         },
         {
-            title: "Expansión Regional",
-            date: "Marzo 2020",
+            title: "Primer Año",
+            date: "Marzo 2024",
             image: "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&q=80&w=800",
-            description: "A pesar de los desafíos globales, logramos expandir nuestra cobertura a todo el nivel regional. Nos reinventamos adaptando nuestros protocolos estandarizados e implementando rutas universitarias esenciales.",
-            link: "#"
+            description: "A pesar de los desafíos y las imperfecciones propias de un emprendimiento nuevo, MoviGO logró crecer y expandirse a nuevas rutas y universidades. Logró corregir los problemas iniciales y los inconvenientes que surgian dia a dia, garantizando el servicio de calidad.",
         },
         {
-            title: "Party Bus y Nuevas Experiencias",
-            date: "Mayo 2022",
+            title: "Endeavor Sub-20",
+            date: "Abril 2025",
             image: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&q=80&w=800",
-            description: "Con el objetivo de innovar, se incorpora la exitosa línea Party Bus. Transformamos por completo el concepto de traslados al introducir experiencias premium y entretenimiento interactivo directamente a bordo.",
-            link: "#"
+            description: "Junto a Nicki Nicole y Colapinto,Melina es seleccionada para participar en el programa Endeavor Sub-20, una iniciativa que busca fomentar el emprendimiento en jóvenes, hablando en el Movistar Arena frente a +1000 personas, contando su historia y la de MoviGO.",
+            link: "https://youtu.be/cRmOawt0YJs?si=CWOim3QPCC1YCOkb"
         },
         {
-            title: "MoviGO Tech & Futuro",
-            date: "Enero 2024",
+            title: "Nota en iProUp",
+            date: "Mayo 2025",
             image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800",
-            description: "Empezamos nuestro proceso de transformación digital. Creamos plataformas enfocadas 100% en el usuario para brindar cotizaciones en tiempo real y gestión inteligente de todas nuestras unidades. Hacia el futuro, sin detenernos.",
-            link: "#"
-        }
+            description: "IproUp, un medio especializado en startups, se interesa en la historia de MoviGO y Melina, publicando una nota sobre su historia y la de MoviGO.",
+            link: "https://www.iproup.com/startups/55732-nicki-nicole-y-colapinto-juntos-en-evento-de-startups-el-mensaje-a-los-jovenes"
+        },
+        {
+            title: "Nota en Infobae",
+            date: "Mayo 2025",
+            image: "imagenes/infobae.jpg",
+            description: "Infobae, después del speach de Melina en Endeavor, se interesa en la historia de MoviGO y Melina, publicando una nota sobre su historia y la de MoviGO.",
+            link: "https://www.infobae.com/economia/2025/05/04/la-historia-de-3-emprendedores-sub-20-como-detectar-oportunidades-en-la-adversidad/"
+        },
+        {
+            title: "Entrevista en F5",
+            date: "Mayo 2025",
+            image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800",
+            description: "Melina es invitada a F5, de LovestTV, un programa de radio, para contar su historia y la de MoviGO.",
+            link: "https://www.youtube.com/watch?v=eW-Fx5OBCvE"
+        },
+        {
+            title: "Talento Argentino",
+            date: "Mayo 2025",
+            image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800",
+            description: "Melina en Talento Argetino! ¨Melina Caporalettii empezó su camino como emprendedora con solo 14 años y, tras varias experiencias en el camino, hoy es la fundadora de MoviGO; un servicio de transporte para alumnos que da trabajo a 12 personas¨ .",
+            link: "https://www.instagram.com/reel/DJuq5w7JfDR/"
+        },
+
+
     ];
 
     const timelineContainer = document.getElementById("timeline-container");
@@ -58,9 +79,10 @@ document.addEventListener("DOMContentLoaded", () => {
                             <h3>${item.title}</h3>
                         </div>
                         <p>${item.description}</p>
+                        ${item.link ? `
                         <a href="${item.link}" class="timeline-link" aria-label="Leer más sobre ${item.title}">
                             Saber más <i class="ph ph-arrow-right"></i>
-                        </a>
+                        </a>` : ''}
                     </div>
                 </div>
             `;
@@ -85,7 +107,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 setTimeout(() => {
                     entry.target.style.transitionDelay = "0s";
                 }, 1000);
-                
+
                 entry.target.classList.add("visible");
                 observer.unobserve(entry.target); // Dejamos de observarlo para que quede fijo
             }
